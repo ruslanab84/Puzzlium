@@ -29,6 +29,7 @@ struct PieceTrayView: View {
                 .padding(.horizontal, PZSpacing.l)
             }
             .scrollIndicators(.hidden)
+            .scrollDisabled(viewModel.draggingPiece != nil)
             .frame(height: Self.cell * 2 + PZSpacing.s)
             .overlay {
                 if viewModel.trayPieces.isEmpty {
@@ -78,7 +79,7 @@ private struct TrayPiece: View {
         .opacity(isDragging ? 0.2 : 1)
         .contentShape(Rectangle())
         .onTapGesture { viewModel.rotate(piece) }
-        .gesture(dragGesture)
+        .modifier(LiftGesture(fallback: dragGesture, onChanged: { viewModel.drag(piece, to: $0) }, onEnded: endLift))
         .accessibilityElement()
         .accessibilityLabel(L10n.Game.piece(piece + 1))
         .accessibilityIdentifier("game.trayPiece")
@@ -86,7 +87,12 @@ private struct TrayPiece: View {
         .accessibilityAction(named: L10n.Game.rotatePiece) { viewModel.rotate(piece) }
     }
 
-    /// Short press then drag: horizontal swipes still scroll the tray.
+    private func endLift(dropped: Bool) {
+        if dropped { viewModel.endDrag(in: boardFrame) } else { viewModel.cancelDrag() }
+    }
+
+    /// iOS 17 path. On iOS 18+ SwiftUI gestures run on UIKit and this one swallows
+    /// the ScrollView's pan, so `LiftGesture` swaps in a UIKit long press there.
     private var dragGesture: some Gesture {
         LongPressGesture(minimumDuration: 0.12)
             .sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .named(GameView.space)))
@@ -102,5 +108,42 @@ private struct TrayPiece: View {
                     viewModel.cancelDrag()
                 }
             }
+    }
+}
+
+/// Short press then drag. Moving before the press fires fails it, so a horizontal
+/// swipe still scrolls the tray; once it fires, `scrollDisabled` freezes the tray.
+private struct LiftGesture<Fallback: Gesture>: ViewModifier {
+    let fallback: Fallback
+    let onChanged: (CGPoint) -> Void
+    let onEnded: (_ dropped: Bool) -> Void
+
+    func body(content: Content) -> some View {
+        if #available(iOS 18.0, *) {
+            content.gesture(UIKitLongPress(onChanged: onChanged, onEnded: onEnded))
+        } else {
+            content.gesture(fallback)
+        }
+    }
+}
+
+@available(iOS 18.0, *)
+private struct UIKitLongPress: UIGestureRecognizerRepresentable {
+    let onChanged: (CGPoint) -> Void
+    let onEnded: (_ dropped: Bool) -> Void
+
+    func makeUIGestureRecognizer(context: Context) -> UILongPressGestureRecognizer {
+        let recognizer = UILongPressGestureRecognizer()
+        recognizer.minimumPressDuration = 0.12
+        return recognizer
+    }
+
+    func handleUIGestureRecognizerAction(_ recognizer: UILongPressGestureRecognizer, context: Context) {
+        switch recognizer.state {
+        case .began, .changed: onChanged(context.converter.location(in: .named(GameView.space)))
+        case .ended: onEnded(true)
+        case .cancelled, .failed: onEnded(false)
+        default: break
+        }
     }
 }
