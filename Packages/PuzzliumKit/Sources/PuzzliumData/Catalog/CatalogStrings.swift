@@ -14,6 +14,16 @@ enum CatalogStrings {
     static var autumnValley: String { String(localized: "puzzle.autumnValley", defaultValue: "Autumn Valley", bundle: .module) }
     static var harborNoon: String { String(localized: "puzzle.harborNoon", defaultValue: "Harbor Noon", bundle: .module) }
     static var marigold: String { String(localized: "puzzle.marigold", defaultValue: "Marigold", bundle: .module) }
+    static var eiffelTower: String { String(localized: "landmark.eiffelTower", defaultValue: "Eiffel Tower", bundle: .module) }
+    static var colosseum: String { String(localized: "landmark.colosseum", defaultValue: "Colosseum", bundle: .module) }
+    static var greatWall: String { String(localized: "landmark.greatWall", defaultValue: "Great Wall of China", bundle: .module) }
+    static var tajMahal: String { String(localized: "landmark.tajMahal", defaultValue: "Taj Mahal", bundle: .module) }
+    static var gizaPyramids: String { String(localized: "landmark.gizaPyramids", defaultValue: "Pyramids of Giza", bundle: .module) }
+    static var statueOfLiberty: String { String(localized: "landmark.statueOfLiberty", defaultValue: "Statue of Liberty", bundle: .module) }
+    static var machuPicchu: String { String(localized: "landmark.machuPicchu", defaultValue: "Machu Picchu", bundle: .module) }
+    static var sydneyOperaHouse: String { String(localized: "landmark.sydneyOperaHouse", defaultValue: "Sydney Opera House", bundle: .module) }
+    static var bigBen: String { String(localized: "landmark.bigBen", defaultValue: "Big Ben", bundle: .module) }
+    static var saintBasils: String { String(localized: "landmark.saintBasils", defaultValue: "Saint Basil’s Cathedral", bundle: .module) }
     static var autumnTitle: String { String(localized: "event.autumnTitle", defaultValue: "Autumn Trail", bundle: .module) }
     static var goldenWoods: String { String(localized: "event.goldenWoods", defaultValue: "Golden Woods", bundle: .module) }
     static var lanternTown: String { String(localized: "event.lanternTown", defaultValue: "Lantern Town", bundle: .module) }

@@ -16,7 +16,22 @@ enum BundledCatalog {
             Puzzle(id: "b-morning-sands", title: CatalogStrings.morningSands, category: .nature, image: .procedural(style: .dunes, variant: 2)),
             Puzzle(id: "b-autumn-valley", title: CatalogStrings.autumnValley, category: .nature, image: .procedural(style: .lake, variant: 2)),
             Puzzle(id: "b-harbor-noon", title: CatalogStrings.harborNoon, category: .cities, image: .procedural(style: .city, variant: 2)),
-            Puzzle(id: "b-marigold", title: CatalogStrings.marigold, category: .art, image: .procedural(style: .bloom, variant: 2))
+            Puzzle(id: "b-marigold", title: CatalogStrings.marigold, category: .art, image: .procedural(style: .bloom, variant: 2)),
+            landmark("eiffel-tower", CatalogStrings.eiffelTower, isNew: true),
+            landmark("colosseum", CatalogStrings.colosseum, isNew: true),
+            landmark("great-wall", CatalogStrings.greatWall, isNew: true),
+            landmark("taj-mahal", CatalogStrings.tajMahal),
+            landmark("giza-pyramids", CatalogStrings.gizaPyramids),
+            landmark("statue-of-liberty", CatalogStrings.statueOfLiberty),
+            landmark("machu-picchu", CatalogStrings.machuPicchu),
+            landmark("sydney-opera-house", CatalogStrings.sydneyOperaHouse),
+            landmark("big-ben", CatalogStrings.bigBen),
+            landmark("saint-basils", CatalogStrings.saintBasils)
         ]
+    }
+
+    /// Photo puzzles; the JPEG is `Resources/landmark-<slug>.jpg` (credits in README).
+    private static func landmark(_ slug: String, _ title: String, isNew: Bool = false) -> Puzzle {
+        Puzzle(id: "b-landmark-\(slug)", title: title, category: .landmarks, image: .bundled("landmark-\(slug)"), isNew: isNew)
     }
 }

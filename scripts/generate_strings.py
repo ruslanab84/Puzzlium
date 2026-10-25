@@ -48,6 +48,7 @@ FEATURES = [
     ("category.nature", "Nature", "Природа", []),
     ("category.cities", "Cities", "Города", []),
     ("category.art", "Art", "Искусство", []),
+    ("category.landmarks", "Landmarks", "Достопримечательности", []),
 
     ("status.completed", "Completed", "Пройден", []),
     ("status.inProgress", "In progress", "В процессе", []),
@@ -126,6 +127,17 @@ CATALOG = [
     ("puzzle.autumnValley", "Autumn Valley", "Осенняя долина", []),
     ("puzzle.harborNoon", "Harbor Noon", "Полдень в гавани", []),
     ("puzzle.marigold", "Marigold", "Бархатцы", []),
+
+    ("landmark.eiffelTower", "Eiffel Tower", "Эйфелева башня", []),
+    ("landmark.colosseum", "Colosseum", "Колизей", []),
+    ("landmark.greatWall", "Great Wall of China", "Великая Китайская стена", []),
+    ("landmark.tajMahal", "Taj Mahal", "Тадж-Махал", []),
+    ("landmark.gizaPyramids", "Pyramids of Giza", "Пирамиды Гизы", []),
+    ("landmark.statueOfLiberty", "Statue of Liberty", "Статуя Свободы", []),
+    ("landmark.machuPicchu", "Machu Picchu", "Мачу-Пикчу", []),
+    ("landmark.sydneyOperaHouse", "Sydney Opera House", "Сиднейский оперный театр", []),
+    ("landmark.bigBen", "Big Ben", "Биг-Бен", []),
+    ("landmark.saintBasils", "Saint Basil’s Cathedral", "Собор Василия Блаженного", []),
 
     ("event.autumnTitle", "Autumn Trail", "Осенняя тропа", []),
     ("event.goldenWoods", "Golden Woods", "Золотой лес", []),

@@ -63,6 +63,13 @@ public actor PuzzleImageLoader: PuzzleImageProviding {
             }
             return PuzzleImage(cgImage: image)
 
+        case let .bundled(name):
+            guard let url = Bundle.module.url(forResource: name, withExtension: "jpg"),
+                  let data = try? Data(contentsOf: url),
+                  let image = ImageDownsampler.squareImage(from: data, pixelSize: pixelSize)
+            else { throw ImageLoadingError.decodingFailed }
+            return PuzzleImage(cgImage: image)
+
         case let .remote(url):
             guard url.scheme == "https" else { throw ImageLoadingError.insecureURL }
             let data: Data

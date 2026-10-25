@@ -205,6 +205,176 @@
         }
       }
     },
+    "landmark.eiffelTower": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eiffel Tower"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Эйфелева башня"
+          }
+        }
+      }
+    },
+    "landmark.colosseum": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colosseum"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Колизей"
+          }
+        }
+      }
+    },
+    "landmark.greatWall": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Great Wall of China"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Великая Китайская стена"
+          }
+        }
+      }
+    },
+    "landmark.tajMahal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taj Mahal"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тадж-Махал"
+          }
+        }
+      }
+    },
+    "landmark.gizaPyramids": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pyramids of Giza"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пирамиды Гизы"
+          }
+        }
+      }
+    },
+    "landmark.statueOfLiberty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statue of Liberty"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Статуя Свободы"
+          }
+        }
+      }
+    },
+    "landmark.machuPicchu": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Machu Picchu"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мачу-Пикчу"
+          }
+        }
+      }
+    },
+    "landmark.sydneyOperaHouse": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sydney Opera House"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сиднейский оперный театр"
+          }
+        }
+      }
+    },
+    "landmark.bigBen": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Big Ben"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Биг-Бен"
+          }
+        }
+      }
+    },
+    "landmark.saintBasils": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saint Basil’s Cathedral"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Собор Василия Блаженного"
+          }
+        }
+      }
+    },
     "event.autumnTitle": {
       "extractionState": "manual",
       "localizations": {

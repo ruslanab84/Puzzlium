@@ -426,6 +426,23 @@
         }
       }
     },
+    "category.landmarks": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Landmarks"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Достопримечательности"
+          }
+        }
+      }
+    },
     "status.completed": {
       "extractionState": "manual",
       "localizations": {

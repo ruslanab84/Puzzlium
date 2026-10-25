@@ -38,6 +38,7 @@ public enum PuzzleCategory: String, CaseIterable, Codable, Sendable {
     case nature
     case cities
     case art
+    case landmarks
 }
 
 /// Built-in illustration styles rendered on device (no download needed).
@@ -51,11 +52,14 @@ public enum ArtStyle: String, CaseIterable, Codable, Sendable {
 public enum PuzzleImageSource: Hashable, Codable, Sendable {
     case procedural(style: ArtStyle, variant: Int)
     case remote(URL)
+    /// A JPEG shipped in the app bundle, by resource name.
+    case bundled(String)
 
     /// Stable key for caches.
     public var cacheKey: String {
         switch self {
         case let .procedural(style, variant): "art-\(style.rawValue)-\(variant)"
+        case let .bundled(name): "bundled-\(name)"
         case let .remote(url): url.absoluteString
         }
     }
