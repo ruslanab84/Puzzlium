@@ -1,0 +1,9 @@
+.DS_Store
+xcuserdata/
+*.xcodeproj/
+DerivedData/
+.build/
+.swiftpm/
+build/
+.sync/
+graphify-out/
