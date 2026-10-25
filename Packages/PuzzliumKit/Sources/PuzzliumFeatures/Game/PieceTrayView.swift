@@ -33,7 +33,9 @@ struct PieceTrayView: View {
             .frame(height: Self.cell * 2 + PZSpacing.s)
             .overlay {
                 if viewModel.trayPieces.isEmpty {
-                    Text(L10n.Game.trayEmpty)
+                    // Loose pieces still need placing, so "every piece is placed" would be misleading.
+                    let loose = viewModel.loosePieces.count
+                    Text(loose > 0 ? L10n.Game.looseLeft(loose) : L10n.Game.trayEmpty)
                         .font(PZFont.callout)
                         .foregroundStyle(table.contentMuted)
                 }

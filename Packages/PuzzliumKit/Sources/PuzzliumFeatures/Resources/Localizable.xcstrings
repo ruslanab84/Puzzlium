@@ -1004,6 +1004,23 @@
         }
       }
     },
+    "game.looseLeft": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pieces left on the board: %lld"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Осталось на поле: %lld"
+          }
+        }
+      }
+    },
     "done.badge": {
       "extractionState": "manual",
       "localizations": {

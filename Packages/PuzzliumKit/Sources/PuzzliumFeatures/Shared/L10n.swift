@@ -89,6 +89,7 @@ enum L10n {
         static var rotatePiece: String { String(localized: "game.rotatePiece", defaultValue: "Rotate", bundle: .module) }
         static func progress(_ placed: Int, _ total: Int) -> String { String(localized: "game.progress", defaultValue: "\(placed) of \(total) pieces placed", bundle: .module) }
         static var trayEmpty: String { String(localized: "game.trayEmpty", defaultValue: "Every piece in this group is placed.", bundle: .module) }
+        static func looseLeft(_ count: Int) -> String { String(localized: "game.looseLeft", defaultValue: "Pieces left on the board: \(count)", bundle: .module) }
     }
 
     enum Done {
