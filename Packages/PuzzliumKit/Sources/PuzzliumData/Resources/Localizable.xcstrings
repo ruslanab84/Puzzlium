@@ -1,206 +1,512 @@
 {
   "sourceLanguage": "en",
   "strings": {
-    "puzzle.desertGlow": {
+    "city.amsterdam": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Desert Glow"
+            "value": "Amsterdam Canals"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сияние пустыни"
+            "value": "Каналы Амстердама"
           }
         }
       }
     },
-    "puzzle.quietLake": {
+    "city.frankfurt": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quiet Lake"
+            "value": "Frankfurt at Night"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Тихое озеро"
+            "value": "Ночной Франкфурт"
           }
         }
       }
     },
-    "puzzle.nightSkyline": {
+    "city.hongKong": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Night Skyline"
+            "value": "Hong Kong Harbour"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ночной горизонт"
+            "value": "Гавань Гонконга"
           }
         }
       }
     },
-    "puzzle.springBloom": {
+    "city.newYork": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Spring Bloom"
+            "value": "New York Sunset"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Весеннее цветение"
+            "value": "Закат в Нью-Йорке"
           }
         }
       }
     },
-    "puzzle.violetDunes": {
+    "city.prague": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Violet Dunes"
+            "value": "Prague Old Town"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Фиолетовые дюны"
+            "value": "Старый город Праги"
           }
         }
       }
     },
-    "puzzle.moonlitFjord": {
+    "city.rio": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Moonlit Fjord"
+            "value": "Rio at Dawn"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Лунный фьорд"
+            "value": "Рассвет в Рио"
           }
         }
       }
     },
-    "puzzle.sunsetAvenue": {
+    "city.santorini": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sunset Avenue"
+            "value": "Santorini"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Закатный проспект"
+            "value": "Санторини"
           }
         }
       }
     },
-    "puzzle.blueGarden": {
+    "city.singapore": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Blue Garden"
+            "value": "Singapore Nights"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Синий сад"
+            "value": "Ночной Сингапур"
           }
         }
       }
     },
-    "puzzle.morningSands": {
+    "city.tokyo": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Morning Sands"
+            "value": "Tokyo Neon"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Утренние пески"
+            "value": "Неоновый Токио"
           }
         }
       }
     },
-    "puzzle.autumnValley": {
+    "city.venice": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Autumn Valley"
+            "value": "Venice"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Осенняя долина"
+            "value": "Венеция"
           }
         }
       }
     },
-    "puzzle.harborNoon": {
+    "art.starryNight": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Harbor Noon"
+            "value": "The Starry Night"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Полдень в гавани"
+            "value": "Звёздная ночь"
           }
         }
       }
     },
-    "puzzle.marigold": {
+    "art.greatWave": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Marigold"
+            "value": "The Great Wave"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Бархатцы"
+            "value": "Большая волна"
+          }
+        }
+      }
+    },
+    "art.waterLilies": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Water Lilies"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кувшинки"
+          }
+        }
+      }
+    },
+    "art.theKiss": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Kiss"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поцелуй"
+          }
+        }
+      }
+    },
+    "art.pearlEarring": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Girl with a Pearl Earring"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Девушка с жемчужной серёжкой"
+          }
+        }
+      }
+    },
+    "art.grandeJatte": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Sunday on La Grande Jatte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Воскресенье на Гранд-Жатт"
+          }
+        }
+      }
+    },
+    "art.huntersSnow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hunters in the Snow"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Охотники на снегу"
+          }
+        }
+      }
+    },
+    "art.sunflowers": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunflowers"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подсолнухи"
+          }
+        }
+      }
+    },
+    "art.moulinGalette": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bal du moulin de la Galette"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Бал в Мулен де ла Галетт"
+          }
+        }
+      }
+    },
+    "art.almondBlossom": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Almond Blossom"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цветущий миндаль"
+          }
+        }
+      }
+    },
+    "nature.northernLights": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Northern Lights"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Северное сияние"
+          }
+        }
+      }
+    },
+    "nature.autumnForest": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autumn Forest"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Осенний лес"
+          }
+        }
+      }
+    },
+    "nature.tropicalBeach": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tropical Beach"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тропический пляж"
+          }
+        }
+      }
+    },
+    "nature.saharaNight": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahara Night"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ночь в Сахаре"
+          }
+        }
+      }
+    },
+    "nature.icelandicWaterfall": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Icelandic Waterfall"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Исландский водопад"
+          }
+        }
+      }
+    },
+    "nature.forestFalls": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forest Falls"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лесной водопад"
+          }
+        }
+      }
+    },
+    "nature.mountFuji": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mount Fuji"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гора Фудзи"
+          }
+        }
+      }
+    },
+    "nature.glacierLagoon": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glacier Lagoon"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ледниковая лагуна"
+          }
+        }
+      }
+    },
+    "nature.himalayanLake": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Himalayan Lake"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Гималайское озеро"
+          }
+        }
+      }
+    },
+    "nature.tulipFields": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tulip Fields"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тюльпановые поля"
           }
         }
       }

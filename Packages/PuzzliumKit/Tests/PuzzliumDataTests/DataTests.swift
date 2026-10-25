@@ -73,7 +73,7 @@ struct ProgressStoreTests {
 struct BundledContentTests {
     @Test func catalogIsValid() {
         let puzzles = BundledCatalog.puzzles
-        #expect(puzzles.count == 22)
+        #expect(puzzles.count == 40)
         #expect(Set(puzzles.map(\.id)).count == puzzles.count)
         #expect(puzzles.allSatisfy { !$0.title.isEmpty })
     }
@@ -84,8 +84,8 @@ struct BundledContentTests {
         #expect(image?.width == 128)
     }
 
-    @Test(arguments: BundledCatalog.puzzles.filter { $0.category == .landmarks })
-    func landmarkPhotoLoads(puzzle: Puzzle) async throws {
+    @Test(arguments: BundledCatalog.puzzles.filter { if case .bundled = $0.image { true } else { false } })
+    func bundledPhotoLoads(puzzle: Puzzle) async throws {
         let loader = PuzzleImageLoader(cacheDirectory: URL.temporaryDirectory.appending(path: UUID().uuidString))
         let image = try await loader.image(for: puzzle.image, pixelSize: 256)
         #expect(image.cgImage.width == 256)
@@ -95,6 +95,6 @@ struct BundledContentTests {
         let directory = URL.temporaryDirectory.appending(path: UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         let repository = DefaultPuzzleRepository(client: nil, cacheDirectory: directory)
-        #expect(try await repository.catalog().count == 22)
+        #expect(try await repository.catalog().count == 40)
     }
 }
