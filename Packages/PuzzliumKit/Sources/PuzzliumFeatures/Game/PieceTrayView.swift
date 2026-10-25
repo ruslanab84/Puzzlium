@@ -92,7 +92,7 @@ private struct TrayPiece: View {
     }
 
     /// iOS 17 path. On iOS 18+ SwiftUI gestures run on UIKit and this one swallows
-    /// the ScrollView's pan, so `LiftGesture` swaps in a UIKit long press there.
+    /// the ScrollView's pan, so `LiftGesture` swaps in a direction-aware UIKit pan there.
     private var dragGesture: some Gesture {
         LongPressGesture(minimumDuration: 0.12)
             .sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .named(GameView.space)))
@@ -111,8 +111,8 @@ private struct TrayPiece: View {
     }
 }
 
-/// Short press then drag. Moving before the press fires fails it, so a horizontal
-/// swipe still scrolls the tray; once it fires, `scrollDisabled` freezes the tray.
+/// Vertical drag lifts a piece, horizontal swipe scrolls the tray. Direction, not
+/// press timing, decides: a finger that rests a moment before swiping still scrolls.
 private struct LiftGesture<Fallback: Gesture>: ViewModifier {
     let fallback: Fallback
     let onChanged: (CGPoint) -> Void
@@ -120,7 +120,7 @@ private struct LiftGesture<Fallback: Gesture>: ViewModifier {
 
     func body(content: Content) -> some View {
         if #available(iOS 18.0, *) {
-            content.gesture(UIKitLongPress(onChanged: onChanged, onEnded: onEnded))
+            content.gesture(VerticalPan(onChanged: onChanged, onEnded: onEnded))
         } else {
             content.gesture(fallback)
         }
@@ -128,22 +128,32 @@ private struct LiftGesture<Fallback: Gesture>: ViewModifier {
 }
 
 @available(iOS 18.0, *)
-private struct UIKitLongPress: UIGestureRecognizerRepresentable {
+private struct VerticalPan: UIGestureRecognizerRepresentable {
     let onChanged: (CGPoint) -> Void
     let onEnded: (_ dropped: Bool) -> Void
 
-    func makeUIGestureRecognizer(context: Context) -> UILongPressGestureRecognizer {
-        let recognizer = UILongPressGestureRecognizer()
-        recognizer.minimumPressDuration = 0.12
+    func makeCoordinator(converter: CoordinateSpaceConverter) -> Coordinator { Coordinator() }
+
+    func makeUIGestureRecognizer(context: Context) -> UIPanGestureRecognizer {
+        let recognizer = UIPanGestureRecognizer()
+        recognizer.delegate = context.coordinator
         return recognizer
     }
 
-    func handleUIGestureRecognizerAction(_ recognizer: UILongPressGestureRecognizer, context: Context) {
+    func handleUIGestureRecognizerAction(_ recognizer: UIPanGestureRecognizer, context: Context) {
         switch recognizer.state {
         case .began, .changed: onChanged(context.converter.location(in: .named(GameView.space)))
         case .ended: onEnded(true)
         case .cancelled, .failed: onEnded(false)
         default: break
+        }
+    }
+
+    final class Coordinator: NSObject, UIGestureRecognizerDelegate {
+        func gestureRecognizerShouldBegin(_ recognizer: UIGestureRecognizer) -> Bool {
+            guard let pan = recognizer as? UIPanGestureRecognizer else { return true }
+            let velocity = pan.velocity(in: pan.view)
+            return abs(velocity.y) > abs(velocity.x)
         }
     }
 }
