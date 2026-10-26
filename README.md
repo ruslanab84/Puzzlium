@@ -101,3 +101,13 @@ resized to 1600×1600.
 | art-sunflowers | Vincent van Gogh | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Vincent_Willem_van_Gogh_127.jpg) |
 | art-moulin-galette | Pierre-Auguste Renoir | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Renoir,_Pierre-Auguste_-_Dance_at_Le_Moulin_de_la_Galette,_1876.jpg) |
 | art-almond-blossom | Vincent van Gogh | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Amandelbloesem_-_s0176V1962_-_Van_Gogh_Museum.jpg) |
+| art-birth-of-venus | Sandro Botticelli | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg) |
+| art-mona-lisa | Leonardo da Vinci | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg) |
+| art-impression-sunrise | Claude Monet | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Monet_-_Impression,_Sunrise.jpg) |
+| art-cafe-terrace | Vincent van Gogh | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Van_Gogh_-_Terrasse_des_Caf%C3%A9s_an_der_Place_du_Forum_in_Arles_am_Abend1.jpeg) |
+| art-wanderer-fog | Caspar David Friedrich | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg) |
+| art-red-fuji | Katsushika Hokusai | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Red_Fuji_southern_wind_clear_morning.jpg) |
+| art-woman-parasol | Claude Monet | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Claude_Monet_-_Woman_with_a_Parasol_-_Madame_Monet_and_Her_Son_-_Google_Art_Project.jpg) |
+| art-fighting-temeraire | J. M. W. Turner | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:The_Fighting_Temeraire,_JMW_Turner,_National_Gallery.jpg) |
+| art-milkmaid | Johannes Vermeer | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Johannes_Vermeer_-_Het_melkmeisje_-_Google_Art_Project.jpg) |
+| art-night-watch | Rembrandt van Rijn | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:La_ronda_de_noche,_por_Rembrandt_van_Rijn.jpg) |

@@ -22,6 +22,16 @@ enum CatalogStrings {
     static var sunflowers: String { String(localized: "art.sunflowers", defaultValue: "Sunflowers", bundle: .module) }
     static var moulinGalette: String { String(localized: "art.moulinGalette", defaultValue: "Bal du moulin de la Galette", bundle: .module) }
     static var almondBlossom: String { String(localized: "art.almondBlossom", defaultValue: "Almond Blossom", bundle: .module) }
+    static var birthOfVenus: String { String(localized: "art.birthOfVenus", defaultValue: "The Birth of Venus", bundle: .module) }
+    static var monaLisa: String { String(localized: "art.monaLisa", defaultValue: "Mona Lisa", bundle: .module) }
+    static var impressionSunrise: String { String(localized: "art.impressionSunrise", defaultValue: "Impression, Sunrise", bundle: .module) }
+    static var cafeTerrace: String { String(localized: "art.cafeTerrace", defaultValue: "Café Terrace at Night", bundle: .module) }
+    static var wandererFog: String { String(localized: "art.wandererFog", defaultValue: "Wanderer above the Sea of Fog", bundle: .module) }
+    static var redFuji: String { String(localized: "art.redFuji", defaultValue: "Red Fuji", bundle: .module) }
+    static var womanParasol: String { String(localized: "art.womanParasol", defaultValue: "Woman with a Parasol", bundle: .module) }
+    static var fightingTemeraire: String { String(localized: "art.fightingTemeraire", defaultValue: "The Fighting Temeraire", bundle: .module) }
+    static var milkmaid: String { String(localized: "art.milkmaid", defaultValue: "The Milkmaid", bundle: .module) }
+    static var nightWatch: String { String(localized: "art.nightWatch", defaultValue: "The Night Watch", bundle: .module) }
     static var northernLights: String { String(localized: "nature.northernLights", defaultValue: "Northern Lights", bundle: .module) }
     static var autumnForest: String { String(localized: "nature.autumnForest", defaultValue: "Autumn Forest", bundle: .module) }
     static var tropicalBeach: String { String(localized: "nature.tropicalBeach", defaultValue: "Tropical Beach", bundle: .module) }
