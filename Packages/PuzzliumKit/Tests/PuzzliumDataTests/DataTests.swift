@@ -73,7 +73,7 @@ struct ProgressStoreTests {
 struct BundledContentTests {
     @Test func catalogIsValid() {
         let puzzles = BundledCatalog.puzzles
-        #expect(puzzles.count == 50)
+        #expect(puzzles.count == 70)
         #expect(Set(puzzles.map(\.id)).count == puzzles.count)
         #expect(puzzles.allSatisfy { !$0.title.isEmpty })
     }
@@ -95,6 +95,6 @@ struct BundledContentTests {
         let directory = URL.temporaryDirectory.appending(path: UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         let repository = DefaultPuzzleRepository(client: nil, cacheDirectory: directory)
-        #expect(try await repository.catalog().count == 50)
+        #expect(try await repository.catalog().count == 70)
     }
 }

@@ -32,6 +32,26 @@ enum CatalogStrings {
     static var fightingTemeraire: String { String(localized: "art.fightingTemeraire", defaultValue: "The Fighting Temeraire", bundle: .module) }
     static var milkmaid: String { String(localized: "art.milkmaid", defaultValue: "The Milkmaid", bundle: .module) }
     static var nightWatch: String { String(localized: "art.nightWatch", defaultValue: "The Night Watch", bundle: .module) }
+    static var ninthWave: String { String(localized: "art.ninthWave", defaultValue: "The Ninth Wave", bundle: .module) }
+    static var plumGarden: String { String(localized: "art.plumGarden", defaultValue: "Plum Garden at Kameido", bundle: .module) }
+    static var adeleBlochBauer: String { String(localized: "art.adeleBlochBauer", defaultValue: "Portrait of Adele Bloch-Bauer I", bundle: .module) }
+    static var boatingParty: String { String(localized: "art.boatingParty", defaultValue: "Luncheon of the Boating Party", bundle: .module) }
+    static var rainSteamSpeed: String { String(localized: "art.rainSteamSpeed", defaultValue: "Rain, Steam and Speed", bundle: .module) }
+    static var hayWain: String { String(localized: "art.hayWain", defaultValue: "The Hay Wain", bundle: .module) }
+    static var towerOfBabel: String { String(localized: "art.towerOfBabel", defaultValue: "The Tower of Babel", bundle: .module) }
+    static var viewOfDelft: String { String(localized: "art.viewOfDelft", defaultValue: "View of Delft", bundle: .module) }
+    static var pineForest: String { String(localized: "art.pineForest", defaultValue: "Morning in a Pine Forest", bundle: .module) }
+    static var goldenAutumn: String { String(localized: "art.goldenAutumn", defaultValue: "Golden Autumn", bundle: .module) }
+    static var balletClass: String { String(localized: "art.balletClass", defaultValue: "The Ballet Class", bundle: .module) }
+    static var arnolfini: String { String(localized: "art.arnolfini", defaultValue: "The Arnolfini Portrait", bundle: .module) }
+    static var lasMeninas: String { String(localized: "art.lasMeninas", defaultValue: "Las Meninas", bundle: .module) }
+    static var parisRainyDay: String { String(localized: "art.parisRainyDay", defaultValue: "Paris Street; Rainy Day", bundle: .module) }
+    static var bedroomArles: String { String(localized: "art.bedroomArles", defaultValue: "Bedroom in Arles", bundle: .module) }
+    static var suddenShower: String { String(localized: "art.suddenShower", defaultValue: "Sudden Shower over Shin-Ōhashi", bundle: .module) }
+    static var cardPlayers: String { String(localized: "art.cardPlayers", defaultValue: "The Card Players", bundle: .module) }
+    static var tigerStorm: String { String(localized: "art.tigerStorm", defaultValue: "Tiger in a Tropical Storm", bundle: .module) }
+    static var bargeHaulers: String { String(localized: "art.bargeHaulers", defaultValue: "Barge Haulers on the Volga", bundle: .module) }
+    static var japaneseFootbridge: String { String(localized: "art.japaneseFootbridge", defaultValue: "The Japanese Footbridge", bundle: .module) }
     static var northernLights: String { String(localized: "nature.northernLights", defaultValue: "Northern Lights", bundle: .module) }
     static var autumnForest: String { String(localized: "nature.autumnForest", defaultValue: "Autumn Forest", bundle: .module) }
     static var tropicalBeach: String { String(localized: "nature.tropicalBeach", defaultValue: "Tropical Beach", bundle: .module) }

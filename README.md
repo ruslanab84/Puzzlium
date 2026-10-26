@@ -111,3 +111,23 @@ resized to 1600×1600.
 | art-fighting-temeraire | J. M. W. Turner | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:The_Fighting_Temeraire,_JMW_Turner,_National_Gallery.jpg) |
 | art-milkmaid | Johannes Vermeer | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Johannes_Vermeer_-_Het_melkmeisje_-_Google_Art_Project.jpg) |
 | art-night-watch | Rembrandt van Rijn | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:La_ronda_de_noche,_por_Rembrandt_van_Rijn.jpg) |
+| art-ninth-wave | Ivan Aivazovsky | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Hovhannes_Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg) |
+| art-plum-garden | Utagawa Hiroshige | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:De_pruimenboomgaard_te_Kameido-Rijksmuseum_RP-P-1956-743.jpeg) |
+| art-adele-bloch-bauer | Gustav Klimt | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gustav_Klimt,_1907,_Adele_Bloch-Bauer_I,_Neue_Galerie_New_York.jpg) |
+| art-boating-party | Pierre-Auguste Renoir | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg) |
+| art-rain-steam-speed | J. M. W. Turner | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Turner_-_Rain,_Steam_and_Speed_-_National_Gallery_file.jpg) |
+| art-hay-wain | John Constable | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:John_Constable_-_The_Hay_Wain_(1821).jpg) |
+| art-tower-of-babel | Pieter Bruegel the Elder | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_(Vienna)_-_Google_Art_Project_-_edited.jpg) |
+| art-view-of-delft | Johannes Vermeer | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:View_of_Delft,_by_Johannes_Vermeer.jpg) |
+| art-pine-forest | Ivan Shishkin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Shishkin,_Ivan_-_Morning_in_a_Pine_Forest.jpg) |
+| art-golden-autumn | Isaac Levitan | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Levitan_Zolotaya_Osen.jpg) |
+| art-ballet-class | Edgar Degas | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Edgar_Degas_-_The_Ballet_Class_-_Google_Art_Project.jpg) |
+| art-arnolfini | Jan van Eyck | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Van_Eyck_-_Arnolfini_Portrait.jpg) |
+| art-las-meninas | Diego Velázquez | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Las_Meninas,_by_Diego_Vel%C3%A1zquez,_from_Prado_in_Google_Earth.jpg) |
+| art-paris-rainy-day | Gustave Caillebotte | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Gustave_Caillebotte_-_Paris_Street%3B_Rainy_Day_-_Google_Art_Project.jpg) |
+| art-bedroom-arles | Vincent van Gogh | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Van_Gogh%27s_Bedroom_in_Arles_-_Google_Art_Project.jpg) |
+| art-sudden-shower | Utagawa Hiroshige | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Hiroshige,_Sudden_shower_over_Shin-%C5%8Chashi_bridge_and_Atake,_1857.jpg) |
+| art-card-players | Paul Cézanne | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Les_Joueurs_de_cartes,_par_Paul_C%C3%A9zanne.jpg) |
+| art-tiger-storm | Henri Rousseau | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Henri_Rousseau_-_Surprise!.jpg) |
+| art-barge-haulers | Ilya Repin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ilya_Repin_-_Barge_Haulers_on_the_Volga_-_Google_Art_Project.jpg) |
+| art-japanese-footbridge | Claude Monet | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Claude_Monet,_The_Japanese_Footbridge,_1899,_NGA_74796.jpg) |
