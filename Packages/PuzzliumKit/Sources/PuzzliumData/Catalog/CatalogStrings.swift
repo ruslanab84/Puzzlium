@@ -53,6 +53,19 @@ enum CatalogStrings {
     static var bargeHaulers: String { String(localized: "art.bargeHaulers", defaultValue: "Barge Haulers on the Volga", bundle: .module) }
     static var japaneseFootbridge: String { String(localized: "art.japaneseFootbridge", defaultValue: "The Japanese Footbridge", bundle: .module) }
     static var autumnPattern: String { String(localized: "art.autumnPattern", defaultValue: "Cozy Autumn", bundle: .module) }
+    static var coastalStreet: String { String(localized: "art.coastalStreet", defaultValue: "Coastal Street", bundle: .module) }
+    static var capeTown: String { String(localized: "art.capeTown", defaultValue: "Cape Town", bundle: .module) }
+    static var kotorBay: String { String(localized: "art.kotorBay", defaultValue: "Bay of Kotor", bundle: .module) }
+    static var rioHillside: String { String(localized: "art.rioHillside", defaultValue: "Rio Hillside", bundle: .module) }
+    static var copacabana: String { String(localized: "art.copacabana", defaultValue: "Copacabana", bundle: .module) }
+    static var valparaiso: String { String(localized: "art.valparaiso", defaultValue: "Valparaíso", bundle: .module) }
+    static var boKaap: String { String(localized: "art.boKaap", defaultValue: "Bo-Kaap", bundle: .module) }
+    static var mediterraneanCove: String { String(localized: "art.mediterraneanCove", defaultValue: "Mediterranean Cove", bundle: .module) }
+    static var orangeTerrace: String { String(localized: "art.orangeTerrace", defaultValue: "Orange Tree Terrace", bundle: .module) }
+    static var popeyeVillage: String { String(localized: "art.popeyeVillage", defaultValue: "Popeye Village", bundle: .module) }
+    static var kayanganLake: String { String(localized: "art.kayanganLake", defaultValue: "Kayangan Lake", bundle: .module) }
+    static var sohotonCove: String { String(localized: "art.sohotonCove", defaultValue: "Sohoton Cove", bundle: .module) }
+    static var fujiPagoda: String { String(localized: "art.fujiPagoda", defaultValue: "Fuji and Pagoda", bundle: .module) }
     static var northernLights: String { String(localized: "nature.northernLights", defaultValue: "Northern Lights", bundle: .module) }
     static var autumnForest: String { String(localized: "nature.autumnForest", defaultValue: "Autumn Forest", bundle: .module) }
     static var tropicalBeach: String { String(localized: "nature.tropicalBeach", defaultValue: "Tropical Beach", bundle: .module) }

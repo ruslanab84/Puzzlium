@@ -58,7 +58,9 @@ Dependency rule: `Features → Domain ← Data`. Engine depends on nothing.
 
 Photo puzzles (`PuzzliumData/Resources/*.jpg`) are Wikimedia Commons photos, center-cropped and
 resized to 1600×1600.
-The exception is `art-autumn-pattern`, an original illustration drawn for Puzzlium.
+The exception is `art-autumn-pattern`, an original illustration drawn for Puzzlium, and the
+Pixabay illustrations listed at the end of the table (Pixabay Content License: free for
+commercial use, attribution not required; AI-assisted works by CreativeCanvasDesign).
 
 | File | Author | License | Source |
 |------|--------|---------|--------|
@@ -132,3 +134,16 @@ The exception is `art-autumn-pattern`, an original illustration drawn for Puzzli
 | art-tiger-storm | Henri Rousseau | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Henri_Rousseau_-_Surprise!.jpg) |
 | art-barge-haulers | Ilya Repin | Public domain | [Commons](https://commons.wikimedia.org/wiki/File:Ilya_Repin_-_Barge_Haulers_on_the_Volga_-_Google_Art_Project.jpg) |
 | art-japanese-footbridge | Claude Monet | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Claude_Monet,_The_Japanese_Footbridge,_1899,_NGA_74796.jpg) |
+| art-coastal-street | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/coastal-town-street-10172269/) |
+| art-cape-town | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/cape-town-illustration-10176294/) |
+| art-kotor | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/kotor-montenegro-adriatic-coast-10282658/) |
+| art-favela | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/brazil-brazilian-favela-favelas-10104348/) |
+| art-copacabana | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/brazil-rio-de-janeiro-copacabana-10106149/) |
+| art-valparaiso | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/valparaiso-cerro-alegre-chile-10133080/) |
+| art-bo-kaap | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/bo-kaap-cape-town-south-africa-10133093/) |
+| art-mediterranean-cove | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/mediterranean-coast-coastal-village-10152656/) |
+| art-orange-terrace | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/mediterranean-terrace-orange-tree-10188010/) |
+| art-popeye-village | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/popeye-village-blue-hour-10282025/) |
+| art-kayangan-lake | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/ai-generated-kayangan-lake-coron-10284574/) |
+| art-sohoton-cove | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/ai-generated-sohoton-cove-samar-10284592/) |
+| art-fuji-pagoda | CreativeCanvasDesign | Pixabay Content License | [Pixabay](https://pixabay.com/vectors/ai-generated-japan-mount-fuji-10284626/) |
