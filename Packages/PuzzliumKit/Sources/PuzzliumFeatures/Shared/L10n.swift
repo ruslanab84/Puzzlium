@@ -84,6 +84,10 @@ enum L10n {
         static func filterAll(_ count: Int) -> String { String(localized: "game.filterAll", defaultValue: "All · \(count)", bundle: .module) }
         static func filterEdges(_ count: Int) -> String { String(localized: "game.filterEdges", defaultValue: "Edges · \(count)", bundle: .module) }
         static func filterInner(_ count: Int) -> String { String(localized: "game.filterInner", defaultValue: "Inner · \(count)", bundle: .module) }
+        static var hintLabel: String { String(localized: "game.hintLabel", defaultValue: "Hint", bundle: .module) }
+        static var filterAllLabel: String { String(localized: "game.filterAllLabel", defaultValue: "All", bundle: .module) }
+        static var filterEdgesLabel: String { String(localized: "game.filterEdgesLabel", defaultValue: "Edges", bundle: .module) }
+        static var filterInnerLabel: String { String(localized: "game.filterInnerLabel", defaultValue: "Inner", bundle: .module) }
         static func piece(_ number: Int) -> String { String(localized: "game.piece", defaultValue: "Piece \(number)", bundle: .module) }
         static var placePiece: String { String(localized: "game.placePiece", defaultValue: "Place piece", bundle: .module) }
         static var rotatePiece: String { String(localized: "game.rotatePiece", defaultValue: "Rotate", bundle: .module) }

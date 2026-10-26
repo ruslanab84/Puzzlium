@@ -9,15 +9,17 @@ struct PieceTrayView: View {
     let boardFrame: CGRect
 
     private static let cell: CGFloat = 64
+    @Namespace private var chipNamespace
     private let rows = [GridItem(.fixed(cell), spacing: PZSpacing.s), GridItem(.fixed(cell))]
 
     var body: some View {
         VStack(alignment: .leading, spacing: PZSpacing.m) {
             HStack(spacing: PZSpacing.s) {
-                filterChip(.all, title: L10n.Game.filterAll(viewModel.trayCount(.all)))
-                filterChip(.edges, title: L10n.Game.filterEdges(viewModel.trayCount(.edges)))
-                filterChip(.inner, title: L10n.Game.filterInner(viewModel.trayCount(.inner)))
+                filterChip(.all, title: L10n.Game.filterAllLabel, label: L10n.Game.filterAll)
+                filterChip(.edges, title: L10n.Game.filterEdgesLabel, label: L10n.Game.filterEdges)
+                filterChip(.inner, title: L10n.Game.filterInnerLabel, label: L10n.Game.filterInner)
             }
+            .animation(.spring(response: 0.32, dampingFraction: 0.7), value: viewModel.trayFilter)
             .padding(.horizontal, PZSpacing.l)
 
             ScrollView(.horizontal) {
@@ -51,10 +53,45 @@ struct PieceTrayView: View {
         .animation(.snappy(duration: 0.25), value: viewModel.trayPieces)
     }
 
-    private func filterChip(_ filter: TrayFilter, title: String) -> some View {
-        PZChip(title, isSelected: viewModel.trayFilter == filter, tone: table.isLight ? .light : .onFelt) {
+    private func filterChip(_ filter: TrayFilter, title: String, label: (Int) -> String) -> some View {
+        let count = viewModel.trayCount(filter)
+        let isSelected = viewModel.trayFilter == filter
+        return Button {
             viewModel.trayFilter = filter
+        } label: {
+            HStack(spacing: 6) {
+                Text(title)
+                    .font(PZFont.callout.weight(.bold))
+                Text(verbatim: "\(count)")
+                    .font(PZFont.number(.footnote))
+                    .contentTransition(.numericText(value: Double(count)))
+                    .fixedSize()
+                    .padding(.horizontal, 7)
+                    .frame(minWidth: 24, minHeight: 22)
+                    .background(isSelected ? Color.black.opacity(0.16) : table.raised, in: Capsule())
+                    .animation(.snappy, value: count)
+            }
+            .lineLimit(1)
+            .foregroundStyle(isSelected ? Color(hex: 0x2A1C08) : table.content)
+            .padding(.leading, PZSpacing.m)
+            .padding(.trailing, 6)
+            .frame(minHeight: 40)
+            .background {
+                if isSelected {
+                    Capsule()
+                        .fill(PZColor.amber)
+                        .shadow(color: PZColor.amber.opacity(0.45), radius: 8, y: 2)
+                        .matchedGeometryEffect(id: "filter", in: chipNamespace)
+                } else {
+                    Capsule().fill(table.raised)
+                }
+            }
+            .scaleEffect(isSelected ? 1.05 : 1)
         }
+        .buttonStyle(.plain)
+        .sensoryFeedback(.selection, trigger: isSelected) { _, selected in selected }
+        .accessibilityLabel(label(count))
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }
 

@@ -6,6 +6,7 @@ struct GameHUD: View {
     let viewModel: GameViewModel
     let table: TableSurface
     let onClose: () -> Void
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         let placed = viewModel.board?.placedCount ?? 0
@@ -18,17 +19,36 @@ struct GameHUD: View {
                     .buttonStyle(.pzCircle(background: table.raised, foreground: table.content))
                     .accessibilityIdentifier("game.close")
                 Spacer()
-                VStack(spacing: 2) {
-                    Text(verbatim: "\(placed) / \(total)")
-                        .font(PZFont.number(.title3))
-                        .foregroundStyle(table.content)
-                        .contentTransition(.numericText(value: Double(placed)))
-                        .animation(.snappy, value: placed)
-                    TimelineView(.periodic(from: .now, by: 1)) { context in
-                        Text(verbatim: "\(viewModel.configuration.puzzle.title) · \(TimeText.clock(viewModel.elapsed(at: context.date)))")
-                            .font(PZFont.caption.monospacedDigit())
+                VStack(spacing: 6) {
+                    HStack(alignment: .firstTextBaseline, spacing: 4) {
+                        Text(verbatim: "\(placed)")
+                            .font(.system(.largeTitle, design: .rounded, weight: .black))
+                            .foregroundStyle(PZColor.amber)
+                            .shadow(color: PZColor.amber.opacity(0.45), radius: 8)
+                            .contentTransition(.numericText(value: Double(placed)))
+                        Text(verbatim: "/ \(total)")
+                            .font(.system(.title3, design: .rounded, weight: .heavy))
                             .foregroundStyle(table.contentMuted)
+                    }
+                    .monospacedDigit()
+                    .animation(.snappy, value: placed)
+                    .keyframeAnimator(initialValue: 1.0, trigger: placed) { content, scale in
+                        content.scaleEffect(scale)
+                    } keyframes: { _ in
+                        SpringKeyframe(reduceMotion ? 1 : 1.25, duration: 0.12)
+                        SpringKeyframe(1, spring: .bouncy)
+                    }
+                    HStack(spacing: 6) {
+                        Label(viewModel.configuration.puzzle.title, systemImage: "puzzlepiece.fill")
                             .lineLimit(1)
+                            .modifier(HUDPill(table: table))
+                        TimelineView(.periodic(from: .now, by: 1)) { context in
+                            Label(TimeText.clock(viewModel.elapsed(at: context.date)), systemImage: "timer")
+                                .monospacedDigit()
+                                .fixedSize()
+                                .modifier(HUDPill(table: table))
+                        }
+                        .fixedSize()
                     }
                 }
                 .accessibilityElement(children: .combine)
@@ -51,30 +71,97 @@ struct GameHUD: View {
     }
 }
 
+private struct HUDPill: ViewModifier {
+    let table: TableSurface
+
+    func body(content: Content) -> some View {
+        content
+            .font(PZFont.caption.weight(.bold))
+            .foregroundStyle(table.content)
+            .labelStyle(HUDPillLabelStyle())
+            .padding(.horizontal, 10)
+            .padding(.vertical, 4)
+            .background(table.raised, in: Capsule())
+    }
+}
+
+private struct HUDPillLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack(spacing: 4) {
+            configuration.icon.foregroundStyle(PZColor.amber)
+            configuration.title
+        }
+    }
+}
+
 struct GameToolbar: View {
     let viewModel: GameViewModel
     let table: TableSurface
+    @State private var shuffles = 0
 
     var body: some View {
         HStack(spacing: PZSpacing.s) {
-            tool(L10n.Game.shuffle, icon: "shuffle", id: "game.shuffle", action: viewModel.shuffleTray)
-            tool(L10n.Game.hint(viewModel.hintsLeft), icon: "lightbulb", id: "game.hint", action: viewModel.useHint)
-                .disabled(viewModel.hintsLeft == 0)
+            Button {
+                shuffles += 1
+                viewModel.shuffleTray()
+            } label: {
+                HStack(spacing: 8) {
+                    Image(systemName: "shuffle")
+                        .symbolEffect(.bounce, value: shuffles)
+                    Text(L10n.Game.shuffle)
+                }
+            }
+            .buttonStyle(GameKeyButtonStyle(face: table.raised, edge: .black.opacity(0.28), foreground: table.content))
+            .accessibilityIdentifier("game.shuffle")
+
+            Button(action: viewModel.useHint) {
+                HStack(spacing: 8) {
+                    Image(systemName: "lightbulb.fill")
+                        .symbolEffect(.bounce, value: viewModel.hintsLeft)
+                    Text(L10n.Game.hintLabel)
+                    Text(verbatim: "\(viewModel.hintsLeft)")
+                        .font(PZFont.number(.footnote))
+                        .contentTransition(.numericText(value: Double(viewModel.hintsLeft)))
+                        .frame(minWidth: 22, minHeight: 22)
+                        .background(.black.opacity(0.18), in: Circle())
+                }
+                .animation(.snappy, value: viewModel.hintsLeft)
+            }
+            .buttonStyle(GameKeyButtonStyle(face: PZColor.amber, edge: Color(hex: 0xA8661A), foreground: Color(hex: 0x2A1C08)))
+            .disabled(viewModel.hintsLeft == 0)
+            .accessibilityLabel(L10n.Game.hint(viewModel.hintsLeft))
+            .accessibilityIdentifier("game.hint")
         }
         .padding(.horizontal, PZSpacing.l)
         .padding(.vertical, PZSpacing.m)
         .frame(maxWidth: 720)
     }
+}
 
-    private func tool(_ title: String, icon: String, id: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Label(title, systemImage: icon)
-                .font(PZFont.footnote.weight(.semibold))
-                .foregroundStyle(table.content)
-                .frame(maxWidth: .infinity, minHeight: 44)
-                .background(table.raised, in: RoundedRectangle(cornerRadius: PZRadius.s, style: .continuous))
-        }
-        .buttonStyle(.plain)
-        .accessibilityIdentifier(id)
+/// Chunky "game key": a face sitting on a darker edge that sinks in when pressed.
+private struct GameKeyButtonStyle: ButtonStyle {
+    let face: Color
+    let edge: Color
+    let foreground: Color
+    @Environment(\.isEnabled) private var isEnabled
+
+    private let depth: CGFloat = 5
+
+    func makeBody(configuration: Configuration) -> some View {
+        let sink = configuration.isPressed ? depth - 1 : 0
+        let shape = RoundedRectangle(cornerRadius: PZRadius.s, style: .continuous)
+        configuration.label
+            .font(PZFont.headline)
+            .foregroundStyle(foreground)
+            .frame(maxWidth: .infinity, minHeight: 44)
+            .background(face, in: shape)
+            .overlay(shape.strokeBorder(.white.opacity(0.18), lineWidth: 1))
+            .offset(y: sink)
+            .background(edge, in: shape.offset(y: depth))
+            .padding(.bottom, depth)
+            .saturation(isEnabled ? 1 : 0)
+            .opacity(isEnabled ? 1 : 0.5)
+            .animation(.spring(response: 0.18, dampingFraction: 0.55), value: configuration.isPressed)
+            .sensoryFeedback(.impact(weight: .light), trigger: configuration.isPressed) { _, pressed in pressed }
     }
 }
