@@ -171,6 +171,7 @@ CATALOG = [
     ("art.tigerStorm", "Tiger in a Tropical Storm", "Тигр в тропическом шторме", []),
     ("art.bargeHaulers", "Barge Haulers on the Volga", "Бурлаки на Волге", []),
     ("art.japaneseFootbridge", "The Japanese Footbridge", "Японский мостик", []),
+    ("art.autumnPattern", "Cozy Autumn", "Осенний уют", []),
 
     ("nature.northernLights", "Northern Lights", "Северное сияние", []),
     ("nature.autumnForest", "Autumn Forest", "Осенний лес", []),

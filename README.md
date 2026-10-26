@@ -58,6 +58,7 @@ Dependency rule: `Features → Domain ← Data`. Engine depends on nothing.
 
 Photo puzzles (`PuzzliumData/Resources/*.jpg`) are Wikimedia Commons photos, center-cropped and
 resized to 1600×1600.
+The exception is `art-autumn-pattern`, an original illustration drawn for Puzzlium.
 
 | File | Author | License | Source |
 |------|--------|---------|--------|

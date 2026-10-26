@@ -65,6 +65,7 @@ enum BundledCatalog {
             photo("art-tiger-storm", CatalogStrings.tigerStorm, .art),
             photo("art-barge-haulers", CatalogStrings.bargeHaulers, .art),
             photo("art-japanese-footbridge", CatalogStrings.japaneseFootbridge, .art),
+            photo("art-autumn-pattern", CatalogStrings.autumnPattern, .art),
             photo("landmark-eiffel-tower", CatalogStrings.eiffelTower, .landmarks, isNew: true),
             photo("landmark-colosseum", CatalogStrings.colosseum, .landmarks, isNew: true),
             photo("landmark-great-wall", CatalogStrings.greatWall, .landmarks, isNew: true),

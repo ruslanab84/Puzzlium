@@ -52,6 +52,7 @@ enum CatalogStrings {
     static var tigerStorm: String { String(localized: "art.tigerStorm", defaultValue: "Tiger in a Tropical Storm", bundle: .module) }
     static var bargeHaulers: String { String(localized: "art.bargeHaulers", defaultValue: "Barge Haulers on the Volga", bundle: .module) }
     static var japaneseFootbridge: String { String(localized: "art.japaneseFootbridge", defaultValue: "The Japanese Footbridge", bundle: .module) }
+    static var autumnPattern: String { String(localized: "art.autumnPattern", defaultValue: "Cozy Autumn", bundle: .module) }
     static var northernLights: String { String(localized: "nature.northernLights", defaultValue: "Northern Lights", bundle: .module) }
     static var autumnForest: String { String(localized: "nature.autumnForest", defaultValue: "Autumn Forest", bundle: .module) }
     static var tropicalBeach: String { String(localized: "nature.tropicalBeach", defaultValue: "Tropical Beach", bundle: .module) }

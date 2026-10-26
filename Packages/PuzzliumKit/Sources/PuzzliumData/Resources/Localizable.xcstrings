@@ -851,6 +851,23 @@
         }
       }
     },
+    "art.autumnPattern": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cozy Autumn"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Осенний уют"
+          }
+        }
+      }
+    },
     "nature.northernLights": {
       "extractionState": "manual",
       "localizations": {
