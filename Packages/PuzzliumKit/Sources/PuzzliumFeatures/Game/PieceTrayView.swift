@@ -73,9 +73,9 @@ struct PieceTrayView: View {
             }
             .lineLimit(1)
             .foregroundStyle(isSelected ? Color(hex: 0x2A1C08) : table.content)
-            .padding(.leading, PZSpacing.m)
-            .padding(.trailing, 6)
-            .frame(minHeight: 40)
+            .padding(.horizontal, 6)
+            .frame(maxWidth: .infinity, minHeight: 40)
+            .contentShape(Capsule())
             .background {
                 if isSelected {
                     Capsule()
@@ -86,7 +86,6 @@ struct PieceTrayView: View {
                     Capsule().fill(table.raised)
                 }
             }
-            .scaleEffect(isSelected ? 1.05 : 1)
         }
         .buttonStyle(.plain)
         .sensoryFeedback(.selection, trigger: isSelected) { _, selected in selected }
