@@ -52,7 +52,10 @@ struct GameView: View {
         .task { await viewModel.load() }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { viewModel.resume() } else { viewModel.pause() }
+            updateMusic()
         }
+        .onChange(of: viewModel.phase) { updateMusic() }
+        .onDisappear { BackgroundMusic.shared.stop() }
     }
 
     private var loading: some View {
@@ -85,6 +88,15 @@ struct GameView: View {
         Button(L10n.Common.close, systemImage: "xmark", action: close)
             .labelStyle(.iconOnly)
             .buttonStyle(.pzCircle(background: table.raised, foreground: table.content))
+    }
+
+    /// Music plays only while the puzzle is on screen and unsolved.
+    private func updateMusic() {
+        if viewModel.phase == .playing && scenePhase == .active {
+            BackgroundMusic.shared.play()
+        } else {
+            BackgroundMusic.shared.stop()
+        }
     }
 
     private func close() {
