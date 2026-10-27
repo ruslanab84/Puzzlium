@@ -9,6 +9,7 @@ extension PuzzleCategory {
         case .cities: L10n.Category.cities
         case .art: L10n.Category.art
         case .landmarks: L10n.Category.landmarks
+        case .countries: L10n.Category.countries
         }
     }
 }

@@ -41,6 +41,7 @@ enum L10n {
         static var cities: String { String(localized: "category.cities", defaultValue: "Cities", bundle: .module) }
         static var art: String { String(localized: "category.art", defaultValue: "Art", bundle: .module) }
         static var landmarks: String { String(localized: "category.landmarks", defaultValue: "Landmarks", bundle: .module) }
+        static var countries: String { String(localized: "category.countries", defaultValue: "Countries", bundle: .module) }
     }
 
     enum Status {

@@ -443,6 +443,23 @@
         }
       }
     },
+    "category.countries": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Countries"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Страны"
+          }
+        }
+      }
+    },
     "status.completed": {
       "extractionState": "manual",
       "localizations": {

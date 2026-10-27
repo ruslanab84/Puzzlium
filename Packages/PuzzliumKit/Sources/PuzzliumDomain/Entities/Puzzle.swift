@@ -39,6 +39,7 @@ public enum PuzzleCategory: String, CaseIterable, Codable, Sendable {
     case cities
     case art
     case landmarks
+    case countries
 }
 
 /// Built-in illustration styles rendered on device (no download needed).
