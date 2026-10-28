@@ -392,6 +392,23 @@
         }
       }
     },
+    "category.flowers": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flowers"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цветы"
+          }
+        }
+      }
+    },
     "category.cities": {
       "extractionState": "manual",
       "localizations": {

@@ -46,6 +46,7 @@ FEATURES = [
     ("library.pieceRange", "%1$lld–%2$lld pieces", "%1$lld–%2$lld деталей", ["minimum", "maximum"]),
 
     ("category.nature", "Nature", "Природа", []),
+    ("category.flowers", "Flowers", "Цветы", []),
     ("category.cities", "Cities", "Города", []),
     ("category.art", "Art", "Искусство", []),
     ("category.landmarks", "Landmarks", "Достопримечательности", []),
