@@ -47,6 +47,7 @@ FEATURES = [
 
     ("category.nature", "Nature", "Природа", []),
     ("category.flowers", "Flowers", "Цветы", []),
+    ("category.kids", "Kids", "Детям", []),
     ("category.cities", "Cities", "Города", []),
     ("category.art", "Art", "Искусство", []),
     ("category.landmarks", "Landmarks", "Достопримечательности", []),

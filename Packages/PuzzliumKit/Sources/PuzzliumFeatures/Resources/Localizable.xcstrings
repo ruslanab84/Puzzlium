@@ -409,6 +409,23 @@
         }
       }
     },
+    "category.kids": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kids"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Детям"
+          }
+        }
+      }
+    },
     "category.cities": {
       "extractionState": "manual",
       "localizations": {
