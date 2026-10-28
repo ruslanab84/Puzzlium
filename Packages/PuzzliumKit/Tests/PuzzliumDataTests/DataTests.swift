@@ -91,6 +91,14 @@ struct BundledContentTests {
         #expect(image.cgImage.width == 256)
     }
 
+    @Test func eventUsesGalleryPictures() {
+        let gallery = Set(BundledCatalog.puzzles.map(\.image))
+        let event = BundledEvent.autumn
+        for image in event.levels.map(\.puzzle.image) + event.chapters.map(\.postcard) {
+            #expect(gallery.contains(image), "\(image) is not a gallery picture")
+        }
+    }
+
     @Test func offlineRepositoryServesBundledCatalog() async throws {
         let directory = URL.temporaryDirectory.appending(path: UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
