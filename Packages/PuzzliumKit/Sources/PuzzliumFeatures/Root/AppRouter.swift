@@ -42,7 +42,11 @@ final class AppRouter {
 
     func closeGame(showLibrary: Bool = false) {
         activeGame = nil
-        contentVersion += 1
         if showLibrary { selectedTab = .library }
+    }
+
+    /// Called once the game cover has fully slid away, so anything presented on reload sticks.
+    func gameDismissed() {
+        contentVersion += 1
     }
 }

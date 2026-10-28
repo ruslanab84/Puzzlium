@@ -20,19 +20,19 @@ final class EventViewModel {
         preferences = dependencies.preferences
     }
 
-    func load() async {
+    /// Postcards the player already knows about; a reload that returns from a level shows the rest.
+    private var announced: Set<String>?
+
+    func load(announcing: Bool = false) async {
         do {
             let fresh = try await useCase.execute(event)
-            // Coming back from a level that finished a chapter: hand out its postcard.
-            if let previous = progress,
-               let chapter = event.chapters.last(where: { fresh.collected.contains($0.id) && !previous.collected.contains($0.id) }) {
-                progress = fresh
-                // Let the game cover finish dismissing; presenting mid-dismissal drops the sheet.
-                try? await Task.sleep(for: .milliseconds(600))
-                shownPostcard = chapter
-                return
-            }
             progress = fresh
+            if announcing, let announced,
+               let chapter = event.chapters.last(where: { fresh.collected.contains($0.id) && !announced.contains($0.id) }) {
+                shownPostcard = chapter
+            }
+            // A plain reappear (cover still sliding away) must not swallow the reward.
+            if announcing || announced == nil { announced = fresh.collected }
         } catch {
             Log.ui.error("Event progress failed: \(String(describing: error), privacy: .public)")
         }

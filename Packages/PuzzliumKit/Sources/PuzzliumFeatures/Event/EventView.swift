@@ -32,7 +32,9 @@ struct EventView: View {
         .background(PZColor.ground)
         .toolbar(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
-        .task(id: router.contentVersion) { await viewModel.load() }
+        .task { await viewModel.load() }
+        // Bumped only after the game cover is gone: the one reload allowed to hand out a postcard.
+        .onChange(of: router.contentVersion) { Task { await viewModel.load(announcing: true) } }
         .sheet(item: $viewModel.shownPostcard) { chapter in
             PostcardRewardView(
                 chapter: chapter,

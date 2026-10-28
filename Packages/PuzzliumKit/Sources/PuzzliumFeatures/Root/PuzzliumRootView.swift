@@ -39,7 +39,7 @@ public struct PuzzliumRootView: View {
                 .environment(router)
                 .environment(\.imageProvider, dependencies.images)
         }
-        .fullScreenCover(item: $router.activeGame) { configuration in
+        .fullScreenCover(item: $router.activeGame, onDismiss: { router.gameDismissed() }) { configuration in
             GameView(configuration: configuration, dependencies: dependencies)
                 .environment(router)
                 .environment(\.imageProvider, dependencies.images)
