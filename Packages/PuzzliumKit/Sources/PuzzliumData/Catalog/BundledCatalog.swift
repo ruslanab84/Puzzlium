@@ -74,6 +74,15 @@ enum BundledCatalog {
             let name = String(format: "kids-%02d", index + 1)
             return Puzzle(id: name, title: title, category: .kids, image: .bundled(name))
         }
-        return cities + animals + art + postImpressionism + flowers + kids
+        let space = [
+            "Lunar Explorer", "Spiral Galaxy", "Saturn and Moons", "Mars Rover", "Stellar Nursery",
+            "Orbital Sunrise", "Jupiter", "Passing Comet", "Twin Suns", "Space Telescope",
+            "Rocket Launch", "Icy Moon", "Spacewalk", "Planetary Alignment", "Meteor Shower",
+            "Aurora World", "Black Hole", "Lunar Base", "Asteroid Voyage", "Earthrise"
+        ].enumerated().map { index, title in
+            let name = String(format: "space-%02d", index + 1)
+            return Puzzle(id: name, title: title, category: .space, image: .bundled(name))
+        }
+        return cities + animals + art + postImpressionism + flowers + kids + space
     }
 }

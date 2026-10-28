@@ -8,6 +8,7 @@ extension PuzzleCategory {
         case .nature: L10n.Category.nature
         case .flowers: L10n.Category.flowers
         case .kids: L10n.Category.kids
+        case .space: L10n.Category.space
         case .cities: L10n.Category.cities
         case .art: L10n.Category.art
         case .landmarks: L10n.Category.landmarks

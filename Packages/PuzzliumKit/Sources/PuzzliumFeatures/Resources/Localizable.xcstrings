@@ -426,6 +426,23 @@
         }
       }
     },
+    "category.space": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Space"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Космос"
+          }
+        }
+      }
+    },
     "category.cities": {
       "extractionState": "manual",
       "localizations": {
