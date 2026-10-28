@@ -426,6 +426,23 @@
         }
       }
     },
+    "library.generatePhoto": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Generate a picture"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сгенерировать картинку"
+          }
+        }
+      }
+    },
     "library.photoFailed": {
       "extractionState": "manual",
       "localizations": {

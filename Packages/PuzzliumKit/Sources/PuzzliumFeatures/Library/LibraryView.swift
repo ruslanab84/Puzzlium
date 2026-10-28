@@ -8,6 +8,7 @@ struct LibraryView: View {
     @Environment(AppRouter.self) private var router
     @State private var showsGallery = false
     @State private var showsCamera = false
+    @State private var showsPlayground = false
     @State private var galleryItem: PhotosPickerItem?
     @State private var photoFailed = false
 
@@ -46,6 +47,7 @@ struct LibraryView: View {
             CameraPicker { data in Task { await addPhoto(data) } }
                 .ignoresSafeArea()
         }
+        .playgroundSheet(isPresented: $showsPlayground) { data in Task { await addPhoto(data) } }
         .alert(L10n.Library.photoFailed, isPresented: $photoFailed) {}
     }
 
@@ -55,6 +57,7 @@ struct LibraryView: View {
             if CameraPicker.isAvailable {
                 Button(L10n.Library.takePhoto, systemImage: "camera") { showsCamera = true }
             }
+            PlaygroundMenuButton { showsPlayground = true }
         } label: {
             Label(L10n.Library.addPhoto, systemImage: "plus")
         }

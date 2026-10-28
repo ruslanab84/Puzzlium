@@ -47,6 +47,7 @@ FEATURES = [
     ("library.addPhoto", "Add your photo", "Добавить своё фото", []),
     ("library.fromGallery", "Choose from gallery", "Выбрать из галереи", []),
     ("library.takePhoto", "Take a photo", "Сделать снимок", []),
+    ("library.generatePhoto", "Generate a picture", "Сгенерировать картинку", []),
     ("library.photoFailed", "Couldn’t use this photo.", "Не удалось использовать это фото.", []),
 
     ("category.photos", "My photos", "Мои фото", []),

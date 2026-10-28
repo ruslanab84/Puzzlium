@@ -37,6 +37,7 @@ enum L10n {
         static var addPhoto: String { String(localized: "library.addPhoto", defaultValue: "Add your photo", bundle: .module) }
         static var fromGallery: String { String(localized: "library.fromGallery", defaultValue: "Choose from gallery", bundle: .module) }
         static var takePhoto: String { String(localized: "library.takePhoto", defaultValue: "Take a photo", bundle: .module) }
+        static var generatePhoto: String { String(localized: "library.generatePhoto", defaultValue: "Generate a picture", bundle: .module) }
         static var photoFailed: String { String(localized: "library.photoFailed", defaultValue: "Couldn’t use this photo.", bundle: .module) }
     }
 
