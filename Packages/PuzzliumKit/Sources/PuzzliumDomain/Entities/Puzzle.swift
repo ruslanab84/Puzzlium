@@ -36,6 +36,7 @@ public struct Puzzle: Identifiable, Hashable, Codable, Sendable {
 
 public enum PuzzleCategory: String, CaseIterable, Codable, Sendable {
     case nature
+    case animals
     case flowers
     case kids
     case space

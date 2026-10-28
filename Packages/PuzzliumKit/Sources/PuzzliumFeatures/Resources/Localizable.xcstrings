@@ -392,6 +392,23 @@
         }
       }
     },
+    "category.animals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Animals"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Животные"
+          }
+        }
+      }
+    },
     "category.flowers": {
       "extractionState": "manual",
       "localizations": {

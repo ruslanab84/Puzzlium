@@ -6,6 +6,7 @@ extension PuzzleCategory {
     var title: String {
         switch self {
         case .nature: L10n.Category.nature
+        case .animals: L10n.Category.animals
         case .flowers: L10n.Category.flowers
         case .kids: L10n.Category.kids
         case .space: L10n.Category.space
