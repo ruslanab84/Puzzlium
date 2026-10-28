@@ -55,8 +55,4 @@ Dependency rule: `Features → Domain ← Data`. Engine depends on nothing.
 
 ## Puzzle art
 
-All 21 bundled puzzles (`PuzzliumData/Resources/*.jpg`, 1600×1600) are original
-flat-vector illustrations drawn for Puzzlium, so no attribution is required:
-
-- Landmarks: `landmark-statue-of-liberty`.
-- Countries (20): `country-france`, `country-italy`, `country-uk`, `country-egypt`, `country-japan`, `country-china`, `country-india`, `country-russia`, `country-netherlands`, `country-greece`, `country-brazil`, `country-australia`, `country-mexico`, `country-peru`, `country-canada`, `country-kenya`, `country-turkey`, `country-switzerland`, `country-spain`, `country-thailand`.
+No bundled image puzzles ship right now; `BundledCatalog.puzzles` is empty.

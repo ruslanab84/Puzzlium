@@ -2,27 +2,6 @@
 import Foundation
 
 enum CatalogStrings {
-    static var statueOfLiberty: String { String(localized: "landmark.statueOfLiberty", defaultValue: "Statue of Liberty", bundle: .module) }
-    static var france: String { String(localized: "country.france", defaultValue: "France", bundle: .module) }
-    static var italy: String { String(localized: "country.italy", defaultValue: "Italy", bundle: .module) }
-    static var uk: String { String(localized: "country.uk", defaultValue: "United Kingdom", bundle: .module) }
-    static var egypt: String { String(localized: "country.egypt", defaultValue: "Egypt", bundle: .module) }
-    static var japan: String { String(localized: "country.japan", defaultValue: "Japan", bundle: .module) }
-    static var china: String { String(localized: "country.china", defaultValue: "China", bundle: .module) }
-    static var india: String { String(localized: "country.india", defaultValue: "India", bundle: .module) }
-    static var russia: String { String(localized: "country.russia", defaultValue: "Russia", bundle: .module) }
-    static var netherlands: String { String(localized: "country.netherlands", defaultValue: "Netherlands", bundle: .module) }
-    static var greece: String { String(localized: "country.greece", defaultValue: "Greece", bundle: .module) }
-    static var brazil: String { String(localized: "country.brazil", defaultValue: "Brazil", bundle: .module) }
-    static var australia: String { String(localized: "country.australia", defaultValue: "Australia", bundle: .module) }
-    static var mexico: String { String(localized: "country.mexico", defaultValue: "Mexico", bundle: .module) }
-    static var peru: String { String(localized: "country.peru", defaultValue: "Peru", bundle: .module) }
-    static var canada: String { String(localized: "country.canada", defaultValue: "Canada", bundle: .module) }
-    static var kenya: String { String(localized: "country.kenya", defaultValue: "Kenya", bundle: .module) }
-    static var turkey: String { String(localized: "country.turkey", defaultValue: "Turkey", bundle: .module) }
-    static var switzerland: String { String(localized: "country.switzerland", defaultValue: "Switzerland", bundle: .module) }
-    static var spain: String { String(localized: "country.spain", defaultValue: "Spain", bundle: .module) }
-    static var thailand: String { String(localized: "country.thailand", defaultValue: "Thailand", bundle: .module) }
     static var autumnTitle: String { String(localized: "event.autumnTitle", defaultValue: "Autumn Trail", bundle: .module) }
     static var goldenWoods: String { String(localized: "event.goldenWoods", defaultValue: "Golden Woods", bundle: .module) }
     static var lanternTown: String { String(localized: "event.lanternTown", defaultValue: "Lantern Town", bundle: .module) }

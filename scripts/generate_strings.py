@@ -121,28 +121,6 @@ FEATURES = [
 ]
 
 CATALOG = [
-    ("landmark.statueOfLiberty", "Statue of Liberty", "Статуя Свободы", []),
-    ("country.france", "France", "Франция", []),
-    ("country.italy", "Italy", "Италия", []),
-    ("country.uk", "United Kingdom", "Великобритания", []),
-    ("country.egypt", "Egypt", "Египет", []),
-    ("country.japan", "Japan", "Япония", []),
-    ("country.china", "China", "Китай", []),
-    ("country.india", "India", "Индия", []),
-    ("country.russia", "Russia", "Россия", []),
-    ("country.netherlands", "Netherlands", "Нидерланды", []),
-    ("country.greece", "Greece", "Греция", []),
-    ("country.brazil", "Brazil", "Бразилия", []),
-    ("country.australia", "Australia", "Австралия", []),
-    ("country.mexico", "Mexico", "Мексика", []),
-    ("country.peru", "Peru", "Перу", []),
-    ("country.canada", "Canada", "Канада", []),
-    ("country.kenya", "Kenya", "Кения", []),
-    ("country.turkey", "Turkey", "Турция", []),
-    ("country.switzerland", "Switzerland", "Швейцария", []),
-    ("country.spain", "Spain", "Испания", []),
-    ("country.thailand", "Thailand", "Таиланд", []),
-
     ("event.autumnTitle", "Autumn Trail", "Осенняя тропа", []),
     ("event.goldenWoods", "Golden Woods", "Золотой лес", []),
     ("event.lanternTown", "Lantern Town", "Город фонарей", []),
