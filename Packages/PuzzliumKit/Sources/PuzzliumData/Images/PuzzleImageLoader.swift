@@ -64,7 +64,7 @@ public actor PuzzleImageLoader: PuzzleImageProviding {
             return PuzzleImage(cgImage: image)
 
         case let .bundled(name):
-            guard let url = Bundle.module.url(forResource: name, withExtension: "jpg"),
+            guard let url = (Bundle.module.url(forResource: name, withExtension: "jpg") ?? Bundle.module.url(forResource: name, withExtension: "png")),
                   let data = try? Data(contentsOf: url),
                   let image = ImageDownsampler.squareImage(from: data, pixelSize: pixelSize)
             else { throw ImageLoadingError.decodingFailed }

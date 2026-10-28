@@ -26,10 +26,15 @@ public actor DefaultPuzzleRepository: PuzzleRepository {
             scheduleRefreshIfNeeded()
             return memory
         }
-        let local = loadDiskCache() ?? BundledCatalog.puzzles
+        let local = combined(with: loadDiskCache() ?? [])
         memory = local
         scheduleRefreshIfNeeded()
         return local
+    }
+
+    private func combined(with puzzles: [Puzzle]) -> [Puzzle] {
+        let ids = Set(puzzles.map(\.id))
+        return puzzles + BundledCatalog.puzzles.filter { !ids.contains($0.id) }
     }
 
     // MARK: - Refresh
@@ -54,7 +59,7 @@ public actor DefaultPuzzleRepository: PuzzleRepository {
             let response = try await client.send(CatalogEndpoints.catalog())
             let puzzles = response.puzzles.compactMap { $0.toDomain() }
             guard !puzzles.isEmpty else { return }
-            memory = puzzles
+            memory = combined(with: puzzles)
             try saveDiskCache(puzzles)
         } catch {
             Log.data.error("Catalog refresh failed: \(String(describing: error), privacy: .public)")
