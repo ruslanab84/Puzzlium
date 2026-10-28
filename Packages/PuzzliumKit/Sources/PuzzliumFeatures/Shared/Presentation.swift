@@ -11,6 +11,7 @@ extension PuzzleCategory {
         case .flowers: L10n.Category.flowers
         case .food: L10n.Category.food
         case .illustrations: L10n.Category.illustrations
+        case .patterns: L10n.Category.patterns
         case .kids: L10n.Category.kids
         case .space: L10n.Category.space
         case .cities: L10n.Category.cities

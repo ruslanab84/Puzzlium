@@ -109,6 +109,17 @@ enum BundledCatalog {
             let name = String(format: "illustration-%02d", index + 1)
             return Puzzle(id: name, title: title, category: .illustrations, image: .bundled(name))
         }
-        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food + illustrations
+        let patterns = [
+            ("ghosts", "Reading Ghosts"), ("cats", "Cozy Cats"), ("foxes", "Autumn Foxes"),
+            ("rabbits", "Spring Rabbits"), ("bears", "Honey Bears"), ("owls", "Sleepy Owls"),
+            ("hedgehogs", "Woodland Hedgehogs"), ("whales", "Whales and Sailboats"),
+            ("dinosaurs", "Little Dinosaurs"), ("berries", "Summer Berries"), ("tea", "Tea Time"),
+            ("village", "Little Village"), ("sunflowers", "Sunny Garden"), ("space", "Little Planets"),
+            ("butterflies", "Butterfly Garden"), ("penguins", "Winter Penguins"), ("ducks", "Rainy Ducks"),
+            ("autumn", "Autumn Ghosts"), ("dogs", "Playful Dogs"), ("woodland", "Woodland Snails")
+        ].map { name, title in
+            Puzzle(id: "pattern-\(name)", title: title, category: .patterns, image: .bundled(name))
+        }
+        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food + illustrations + patterns
     }
 }
