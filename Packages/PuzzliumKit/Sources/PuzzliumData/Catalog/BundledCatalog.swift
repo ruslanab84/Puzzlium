@@ -100,6 +100,15 @@ enum BundledCatalog {
             let name = String(format: "food-%02d", index + 1)
             return Puzzle(id: name, title: title, category: .food, image: .bundled(name))
         }
-        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food
+        let illustrations = [
+            "Kingfisher", "Autumn Fox", "Squirrel", "Meadow Rabbit", "Night Owl", "Ocean Dolphin",
+            "Lighthouse Sailboat", "Hot Air Balloons", "Window Cat", "Park Puppy", "Pond Frog",
+            "Coral Turtle", "Flower Shop Bicycle", "Apple Orchard", "Lakeside Cottage", "Jungle Parrot",
+            "Aurora Penguin", "Garden Ladybug", "Valley Train", "Whale and Sailboat"
+        ].enumerated().map { index, title in
+            let name = String(format: "illustration-%02d", index + 1)
+            return Puzzle(id: name, title: title, category: .illustrations, image: .bundled(name))
+        }
+        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food + illustrations
     }
 }

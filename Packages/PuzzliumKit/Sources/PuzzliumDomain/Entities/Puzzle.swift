@@ -39,6 +39,7 @@ public enum PuzzleCategory: String, CaseIterable, Codable, Sendable {
     case animals
     case flowers
     case food
+    case illustrations
     case kids
     case space
     case cities

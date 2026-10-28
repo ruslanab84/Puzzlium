@@ -443,6 +443,23 @@
         }
       }
     },
+    "category.illustrations": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Illustrations"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Иллюстрации"
+          }
+        }
+      }
+    },
     "category.kids": {
       "extractionState": "manual",
       "localizations": {
