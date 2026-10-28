@@ -35,6 +35,8 @@ public struct Puzzle: Identifiable, Hashable, Codable, Sendable {
 }
 
 public enum PuzzleCategory: String, CaseIterable, Codable, Sendable {
+    /// Pictures the player added from their gallery or camera.
+    case photos
     case nature
     case animals
     case flowers
@@ -61,12 +63,15 @@ public enum PuzzleImageSource: Hashable, Codable, Sendable {
     case remote(URL)
     /// A JPEG shipped in the app bundle, by resource name.
     case bundled(String)
+    /// A player's own photo, by file name in the app's photo folder.
+    case photo(String)
 
     /// Stable key for caches.
     public var cacheKey: String {
         switch self {
         case let .procedural(style, variant): "art-\(style.rawValue)-\(variant)"
         case let .bundled(name): "bundled-\(name)"
+        case let .photo(name): "photo-\(name)"
         case let .remote(url): url.absoluteString
         }
     }

@@ -18,9 +18,11 @@ final class LibraryViewModel {
     var query = ""
 
     private let useCase: GetLibraryUseCase
+    private let puzzles: any PuzzleRepository
 
     init(dependencies: FeatureDependencies) {
         useCase = GetLibraryUseCase(puzzles: dependencies.puzzles, progress: dependencies.progress)
+        puzzles = dependencies.puzzles
     }
 
     var categories: [PuzzleCategory] {
@@ -60,5 +62,20 @@ final class LibraryViewModel {
             loadFailed = items.isEmpty
         }
         isLoading = false
+    }
+
+    /// Turns a picked or captured picture into a puzzle and shows it. `false` when it isn't a usable image.
+    func addPhoto(_ data: Data?) async -> Bool {
+        guard let data else { return false }
+        do {
+            _ = try await puzzles.addPhoto(data)
+        } catch {
+            Log.ui.error("Adding photo failed: \(String(describing: error), privacy: .public)")
+            return false
+        }
+        query = ""
+        filter = .category(.photos)
+        await load()
+        return true
     }
 }

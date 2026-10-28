@@ -102,7 +102,23 @@ struct BundledContentTests {
     @Test func offlineRepositoryServesBundledCatalog() async throws {
         let directory = URL.temporaryDirectory.appending(path: UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-        let repository = DefaultPuzzleRepository(client: nil, cacheDirectory: directory)
+        let repository = DefaultPuzzleRepository(client: nil, cacheDirectory: directory, photosDirectory: directory.appending(path: "photos"))
         #expect(try await repository.catalog().count == 200)
+    }
+
+    @Test func addedPhotoBecomesPlayablePuzzle() async throws {
+        let directory = URL.temporaryDirectory.appending(path: UUID().uuidString)
+        let photos = directory.appending(path: "photos")
+        let repository = DefaultPuzzleRepository(client: nil, cacheDirectory: directory, photosDirectory: photos)
+        let source = try #require(ProceduralArtRenderer.render(style: .lake, variant: 1, pixelSize: 300))
+        let data = try #require(ImageDownsampler.jpegData(from: source))
+
+        let puzzle = try await repository.addPhoto(data)
+
+        #expect(puzzle.category == .photos)
+        #expect(try await repository.catalog().first?.id == puzzle.id)
+        let loader = PuzzleImageLoader(cacheDirectory: directory.appending(path: "cache"), photosDirectory: photos)
+        #expect(try await loader.image(for: puzzle.image, pixelSize: 256).cgImage.width == 256)
+        await #expect(throws: (any Error).self) { try await repository.addPhoto(Data("not an image".utf8)) }
     }
 }

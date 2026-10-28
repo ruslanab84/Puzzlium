@@ -19,12 +19,18 @@ public actor PuzzleImageLoader: PuzzleImageProviding {
 
     private let session: URLSession
     private let disk: DiskImageCache
+    private let photosDirectory: URL
     private let memory = NSCache<NSString, Entry>()
     private var inFlight: [String: Task<PuzzleImage, any Error>] = [:]
 
-    public init(session: URLSession = .shared, cacheDirectory: URL = URL.cachesDirectory.appending(path: "puzzle-images")) {
+    public init(
+        session: URLSession = .shared,
+        cacheDirectory: URL = URL.cachesDirectory.appending(path: "puzzle-images"),
+        photosDirectory: URL = UserPhotos.directory
+    ) {
         self.session = session
         self.disk = DiskImageCache(directory: cacheDirectory)
+        self.photosDirectory = photosDirectory
         memory.totalCostLimit = 96 * 1024 * 1024
     }
 
@@ -39,8 +45,9 @@ public actor PuzzleImageLoader: PuzzleImageProviding {
 
         let session = session
         let disk = disk
+        let photosDirectory = photosDirectory
         let task = Task.detached(priority: .userInitiated) {
-            try await Self.produce(source: source, pixelSize: pixelSize, session: session, disk: disk)
+            try await Self.produce(source: source, pixelSize: pixelSize, session: session, disk: disk, photosDirectory: photosDirectory)
         }
         inFlight[key] = task
         defer { inFlight[key] = nil }
@@ -54,7 +61,8 @@ public actor PuzzleImageLoader: PuzzleImageProviding {
         source: PuzzleImageSource,
         pixelSize: Int,
         session: URLSession,
-        disk: DiskImageCache
+        disk: DiskImageCache,
+        photosDirectory: URL
     ) async throws -> PuzzleImage {
         switch source {
         case let .procedural(style, variant):
@@ -66,6 +74,12 @@ public actor PuzzleImageLoader: PuzzleImageProviding {
         case let .bundled(name):
             guard let url = (Bundle.module.url(forResource: name, withExtension: "jpg") ?? Bundle.module.url(forResource: name, withExtension: "png")),
                   let data = try? Data(contentsOf: url),
+                  let image = ImageDownsampler.squareImage(from: data, pixelSize: pixelSize)
+            else { throw ImageLoadingError.decodingFailed }
+            return PuzzleImage(cgImage: image)
+
+        case let .photo(name):
+            guard let data = try? Data(contentsOf: photosDirectory.appending(path: name)),
                   let image = ImageDownsampler.squareImage(from: data, pixelSize: pixelSize)
             else { throw ImageLoadingError.decodingFailed }
             return PuzzleImage(cgImage: image)

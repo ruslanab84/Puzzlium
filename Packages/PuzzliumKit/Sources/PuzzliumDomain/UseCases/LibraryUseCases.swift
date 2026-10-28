@@ -65,7 +65,7 @@ public struct GetHomeFeedUseCase: Sendable {
             guard progress.completedAt != nil || progress.isCompleted else { return false }
             return !(progress.completedAt.map { calendar.isDate($0, inSameDayAs: now) } ?? false)
         }.map(\.puzzleID))
-        let daily = selector.puzzle(for: now, in: puzzleList, excluding: solvedBefore, calendar: calendar)
+        let daily = selector.puzzle(for: now, in: puzzleList.filter { $0.category != .photos }, excluding: solvedBefore, calendar: calendar)
         let continueItems = items
             .filter { $0.progress?.isInProgress == true && $0.puzzle.id != daily?.id }
             .sorted { ($0.progress?.updatedAt ?? .distantPast) > ($1.progress?.updatedAt ?? .distantPast) }

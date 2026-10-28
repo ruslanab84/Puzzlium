@@ -34,9 +34,14 @@ enum L10n {
         static var empty: String { String(localized: "library.empty", defaultValue: "Nothing found", bundle: .module) }
         static var badgeNew: String { String(localized: "library.badgeNew", defaultValue: "New", bundle: .module) }
         static func pieceRange(_ minimum: Int, _ maximum: Int) -> String { String(localized: "library.pieceRange", defaultValue: "\(minimum)–\(maximum) pieces", bundle: .module) }
+        static var addPhoto: String { String(localized: "library.addPhoto", defaultValue: "Add your photo", bundle: .module) }
+        static var fromGallery: String { String(localized: "library.fromGallery", defaultValue: "Choose from gallery", bundle: .module) }
+        static var takePhoto: String { String(localized: "library.takePhoto", defaultValue: "Take a photo", bundle: .module) }
+        static var photoFailed: String { String(localized: "library.photoFailed", defaultValue: "Couldn’t use this photo.", bundle: .module) }
     }
 
     enum Category {
+        static var photos: String { String(localized: "category.photos", defaultValue: "My photos", bundle: .module) }
         static var nature: String { String(localized: "category.nature", defaultValue: "Nature", bundle: .module) }
         static var animals: String { String(localized: "category.animals", defaultValue: "Animals", bundle: .module) }
         static var flowers: String { String(localized: "category.flowers", defaultValue: "Flowers", bundle: .module) }

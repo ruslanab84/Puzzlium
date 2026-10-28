@@ -53,4 +53,11 @@ enum ImageDownsampler {
         context.draw(cropped, in: CGRect(x: 0, y: 0, width: pixelSize, height: pixelSize))
         return context.makeImage()
     }
+
+    static func jpegData(from image: CGImage, quality: Double = 0.9) -> Data? {
+        let data = NSMutableData()
+        guard let destination = CGImageDestinationCreateWithData(data, "public.jpeg" as CFString, 1, nil) else { return nil }
+        CGImageDestinationAddImage(destination, image, [kCGImageDestinationLossyCompressionQuality: quality] as CFDictionary)
+        return CGImageDestinationFinalize(destination) ? data as Data : nil
+    }
 }

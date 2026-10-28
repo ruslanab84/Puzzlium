@@ -103,6 +103,7 @@ struct LibraryMergeTests {
 private struct FakePuzzles: PuzzleRepository {
     let puzzles: [Puzzle]
     func catalog() async throws -> [Puzzle] { puzzles }
+    func addPhoto(_ imageData: Data) async throws -> Puzzle { throw CancellationError() }
 }
 
 private actor FakeProgress: ProgressRepository {

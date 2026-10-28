@@ -3,6 +3,8 @@ import Foundation
 public protocol PuzzleRepository: Sendable {
     /// Offline-first: returns local data immediately; refreshes from network when stale.
     func catalog() async throws -> [Puzzle]
+    /// Saves a player's photo (any image format) and returns the new puzzle made from it.
+    func addPhoto(_ imageData: Data) async throws -> Puzzle
 }
 
 public protocol ProgressRepository: Sendable {

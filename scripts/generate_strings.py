@@ -44,7 +44,12 @@ FEATURES = [
     ("library.empty", "Nothing found", "Ничего не найдено", []),
     ("library.badgeNew", "New", "Новое", []),
     ("library.pieceRange", "%1$lld–%2$lld pieces", "%1$lld–%2$lld деталей", ["minimum", "maximum"]),
+    ("library.addPhoto", "Add your photo", "Добавить своё фото", []),
+    ("library.fromGallery", "Choose from gallery", "Выбрать из галереи", []),
+    ("library.takePhoto", "Take a photo", "Сделать снимок", []),
+    ("library.photoFailed", "Couldn’t use this photo.", "Не удалось использовать это фото.", []),
 
+    ("category.photos", "My photos", "Мои фото", []),
     ("category.nature", "Nature", "Природа", []),
     ("category.animals", "Animals", "Животные", []),
     ("category.flowers", "Flowers", "Цветы", []),

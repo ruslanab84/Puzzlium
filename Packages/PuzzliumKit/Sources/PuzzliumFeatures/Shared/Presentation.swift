@@ -5,6 +5,7 @@ import SwiftUI
 extension PuzzleCategory {
     var title: String {
         switch self {
+        case .photos: L10n.Category.photos
         case .nature: L10n.Category.nature
         case .animals: L10n.Category.animals
         case .flowers: L10n.Category.flowers

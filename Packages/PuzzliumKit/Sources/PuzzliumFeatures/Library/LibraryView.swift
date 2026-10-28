@@ -1,10 +1,15 @@
 import PuzzliumDesignSystem
+import PhotosUI
 import PuzzliumDomain
 import SwiftUI
 
 struct LibraryView: View {
     @State private var viewModel: LibraryViewModel
     @Environment(AppRouter.self) private var router
+    @State private var showsGallery = false
+    @State private var showsCamera = false
+    @State private var galleryItem: PhotosPickerItem?
+    @State private var photoFailed = false
 
     private let columns = [GridItem(.adaptive(minimum: 150), spacing: PZSpacing.m)]
 
@@ -28,6 +33,35 @@ struct LibraryView: View {
         .searchable(text: $viewModel.query, prompt: L10n.Library.searchPrompt)
         .task(id: router.contentVersion) { await viewModel.load() }
         .refreshable { await viewModel.load() }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) { addPhotoMenu }
+        }
+        .photosPicker(isPresented: $showsGallery, selection: $galleryItem, matching: .images)
+        .onChange(of: galleryItem) { _, item in
+            guard let item else { return }
+            galleryItem = nil
+            Task { await addPhoto(try? await item.loadTransferable(type: Data.self)) }
+        }
+        .fullScreenCover(isPresented: $showsCamera) {
+            CameraPicker { data in Task { await addPhoto(data) } }
+                .ignoresSafeArea()
+        }
+        .alert(L10n.Library.photoFailed, isPresented: $photoFailed) {}
+    }
+
+    private var addPhotoMenu: some View {
+        Menu {
+            Button(L10n.Library.fromGallery, systemImage: "photo.on.rectangle") { showsGallery = true }
+            if CameraPicker.isAvailable {
+                Button(L10n.Library.takePhoto, systemImage: "camera") { showsCamera = true }
+            }
+        } label: {
+            Label(L10n.Library.addPhoto, systemImage: "plus")
+        }
+    }
+
+    private func addPhoto(_ data: Data?) async {
+        if !(await viewModel.addPhoto(data)) { photoFailed = true }
     }
 
     private var categoryChips: some View {
