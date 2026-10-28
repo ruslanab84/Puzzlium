@@ -14,6 +14,7 @@ extension PuzzleCategory {
         case .patterns: L10n.Category.patterns
         case .kids: L10n.Category.kids
         case .space: L10n.Category.space
+        case .planets: L10n.Category.planets
         case .cities: L10n.Category.cities
         case .art: L10n.Category.art
         case .landmarks: L10n.Category.landmarks

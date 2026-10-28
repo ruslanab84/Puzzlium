@@ -45,6 +45,7 @@ public enum PuzzleCategory: String, CaseIterable, Codable, Sendable {
     case patterns
     case kids
     case space
+    case planets
     case cities
     case art
     case landmarks

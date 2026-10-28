@@ -59,6 +59,7 @@ FEATURES = [
     ("category.patterns", "Patterns", "Узоры", []),
     ("category.kids", "Kids", "Детям", []),
     ("category.space", "Space", "Космос", []),
+    ("category.planets", "Planets & Stars", "Планеты и звёзды", []),
     ("category.cities", "Cities", "Города", []),
     ("category.art", "Art", "Искусство", []),
     ("category.landmarks", "Landmarks", "Достопримечательности", []),

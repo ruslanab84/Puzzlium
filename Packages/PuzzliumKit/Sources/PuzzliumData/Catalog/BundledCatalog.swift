@@ -120,6 +120,15 @@ enum BundledCatalog {
         ].map { name, title in
             Puzzle(id: "pattern-\(name)", title: title, category: .patterns, image: .bundled(name))
         }
-        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food + illustrations + patterns
+        let planets = [
+            "Blue Planet", "Golden Rings", "Red Planet", "Purple Giant", "Icy Planet",
+            "Green and Blue", "Orange Giant", "Volcanic World", "Lavender Rings", "Cobalt Sky",
+            "Planetary Pair", "Golden Halo", "Pink World", "Emerald World", "Planetary System",
+            "Pearl Rings", "Rust Planet", "Violet Rings", "Blue and Gold", "Colorful Planets"
+        ].enumerated().map { index, title in
+            let name = String(format: "planet-%02d", index + 1)
+            return Puzzle(id: name, title: title, category: .planets, image: .bundled(name))
+        }
+        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food + illustrations + patterns + planets
     }
 }

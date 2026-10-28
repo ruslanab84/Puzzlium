@@ -596,6 +596,13 @@
         }
       }
     },
+    "category.planets": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Planets & Stars" } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Планеты и звёзды" } }
+      }
+    },
     "category.space": {
       "extractionState": "manual",
       "localizations": {
