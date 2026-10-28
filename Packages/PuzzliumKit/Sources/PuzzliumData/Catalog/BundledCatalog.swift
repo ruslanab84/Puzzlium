@@ -91,6 +91,15 @@ enum BundledCatalog {
             let name = String(format: "wild-animal-%02d", index + 1)
             return Puzzle(id: name, title: title, category: .animals, image: .bundled(name))
         }
-        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife
+        let food = [
+            "Fruit Basket", "Vegetable Harvest", "Margherita Pizza", "Summer Berries", "Sushi Platter",
+            "Citrus Fruits", "Berry Pancakes", "Watermelon Picnic", "Tomato Pasta", "Peppers and Tomatoes",
+            "Cafe Pastries", "Tropical Fruits", "Burger and Fries", "Fresh Salad", "Chocolate Cake",
+            "Orchard Apples and Pears", "Vegetable Tacos", "Fruit Ice Cream", "Bread and Cheese", "Summer Orchard"
+        ].enumerated().map { index, title in
+            let name = String(format: "food-%02d", index + 1)
+            return Puzzle(id: name, title: title, category: .food, image: .bundled(name))
+        }
+        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food
     }
 }

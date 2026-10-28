@@ -426,6 +426,23 @@
         }
       }
     },
+    "category.food": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Food"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Еда"
+          }
+        }
+      }
+    },
     "category.kids": {
       "extractionState": "manual",
       "localizations": {

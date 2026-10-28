@@ -40,6 +40,7 @@ enum L10n {
         static var nature: String { String(localized: "category.nature", defaultValue: "Nature", bundle: .module) }
         static var animals: String { String(localized: "category.animals", defaultValue: "Animals", bundle: .module) }
         static var flowers: String { String(localized: "category.flowers", defaultValue: "Flowers", bundle: .module) }
+        static var food: String { String(localized: "category.food", defaultValue: "Food", bundle: .module) }
         static var kids: String { String(localized: "category.kids", defaultValue: "Kids", bundle: .module) }
         static var space: String { String(localized: "category.space", defaultValue: "Space", bundle: .module) }
         static var cities: String { String(localized: "category.cities", defaultValue: "Cities", bundle: .module) }
