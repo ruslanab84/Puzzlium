@@ -73,6 +73,15 @@ struct DailyPuzzleSelectorTests {
     @Test func emptyCatalog() {
         #expect(DailyPuzzleSelector().puzzle(for: .now, in: []) == nil)
     }
+
+    @Test func skipsExcludedPuzzles() {
+        let selector = DailyPuzzleSelector()
+        let date = day("2026-10-25")
+        let plain = selector.puzzle(for: date, in: catalog, calendar: utcCalendar)!
+        let skipped = selector.puzzle(for: date, in: catalog, excluding: [plain.id], calendar: utcCalendar)
+        #expect(skipped != nil && skipped != plain)
+        #expect(selector.puzzle(for: date, in: catalog, excluding: Set(catalog.map(\.id)), calendar: utcCalendar) == plain)
+    }
 }
 
 @Suite("GetLibraryUseCase")
@@ -133,6 +142,22 @@ struct HomeFeedTests {
         #expect(feed.newArrivals.map(\.id) == ["a"])
         #expect(!feed.continueItems.contains { $0.puzzle.id == feed.daily?.id })
         #expect(feed.continueItems.allSatisfy { $0.progress?.isInProgress == true })
+    }
+
+    @Test func dailySkipsPuzzlesSolvedEarlierButKeepsTodays() async throws {
+        let today = day("2026-10-25")
+        let catalog = (1...5).map { puzzle("p\($0)") }
+        let plain = DailyPuzzleSelector().puzzle(for: today, in: catalog, calendar: utcCalendar)!
+
+        let solvedYesterday = FakeProgress(items: [progress(plain.id, placed: 36, completed: true, completedAt: today.addingTimeInterval(-86_400))], dates: [])
+        let feed = try await GetHomeFeedUseCase(puzzles: FakePuzzles(puzzles: catalog), progress: solvedYesterday)
+            .execute(now: today, calendar: utcCalendar)
+        #expect(feed.daily != nil && feed.daily != plain)
+
+        let solvedToday = FakeProgress(items: [progress(plain.id, placed: 36, completed: true, completedAt: today)], dates: [today])
+        let todayFeed = try await GetHomeFeedUseCase(puzzles: FakePuzzles(puzzles: catalog), progress: solvedToday)
+            .execute(now: today, calendar: utcCalendar)
+        #expect(todayFeed.daily == plain)
     }
 }
 
