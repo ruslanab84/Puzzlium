@@ -596,6 +596,13 @@
         }
       }
     },
+    "category.underwater": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": { "stringUnit": { "state": "translated", "value": "Underwater" } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Подводный мир" } }
+      }
+    },
     "category.planets": {
       "extractionState": "manual",
       "localizations": {

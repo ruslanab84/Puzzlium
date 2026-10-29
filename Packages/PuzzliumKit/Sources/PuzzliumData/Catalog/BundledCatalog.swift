@@ -129,6 +129,18 @@ enum BundledCatalog {
             let name = String(format: "planet-%02d", index + 1)
             return Puzzle(id: name, title: title, category: .planets, image: .bundled(name))
         }
-        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food + illustrations + patterns + planets
+        let underwater = [
+            ("tropical-fish", "Tropical Fish"), ("shark", "Reef Shark"), ("dolphins", "Dolphins"),
+            ("sea-turtles", "Sea Turtles"), ("shipwreck", "Sunken Ship"), ("octopus", "Octopus and Shipwreck"),
+            ("manta-rays", "Manta Rays"), ("clownfish", "Clownfish"), ("jellyfish", "Jellyfish"),
+            ("seahorses", "Seahorses"), ("whale", "Whale"), ("hammerheads", "Hammerhead Sharks"),
+            ("treasure", "Sunken Treasure"), ("reef-fish", "Reef Fish"), ("whale-shark", "Whale Shark"),
+            ("sea-lions", "Sea Lions"), ("crab-and-starfish", "Crab and Starfish"), ("squid", "Squid"),
+            ("submarine", "Sunken Submarine"), ("coral-reef", "Coral Reef")
+        ].map { name, title in
+            let resource = "underwater-\(name)"
+            return Puzzle(id: resource, title: title, category: .underwater, image: .bundled(resource))
+        }
+        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food + illustrations + patterns + planets + underwater
     }
 }
