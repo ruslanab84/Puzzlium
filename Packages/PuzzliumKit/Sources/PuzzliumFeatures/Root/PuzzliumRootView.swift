@@ -4,6 +4,7 @@ import SwiftUI
 public struct PuzzliumRootView: View {
     private let dependencies: FeatureDependencies
     @State private var router = AppRouter()
+    @State private var showIntro = true
 
     public init(dependencies: FeatureDependencies) {
         self.dependencies = dependencies
@@ -32,6 +33,11 @@ public struct PuzzliumRootView: View {
             .tag(AppRouter.Tab.myPuzzles)
         }
         .tint(PZColor.accentText)
+        .overlay {
+            if showIntro {
+                IntroView { showIntro = false }
+            }
+        }
         .environment(router)
         .environment(\.imageProvider, dependencies.images)
         .sheet(item: $router.setupPuzzle, onDismiss: { router.setupDismissed() }) { puzzle in
