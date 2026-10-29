@@ -71,6 +71,29 @@ struct GameHUD: View {
     }
 }
 
+/// Picks the background track, or turns music off; the choice applies right away.
+private struct MusicMenu: View {
+    let table: TableSurface
+    @Bindable private var music = BackgroundMusic.shared
+
+    var body: some View {
+        Menu {
+            Picker(L10n.Game.music, selection: $music.track) {
+                ForEach(BackgroundMusic.Track.allCases) { track in
+                    Text(track.title).tag(track)
+                }
+            }
+        } label: {
+            Label(L10n.Game.music, systemImage: music.track == .off ? "speaker.slash.fill" : "music.note")
+        }
+        .menuStyle(.button)
+        .labelStyle(.iconOnly)
+        .buttonStyle(GameKeyButtonStyle(face: table.raised, edge: .black.opacity(0.28), foreground: table.content))
+        .accessibilityValue(music.track.title)
+        .accessibilityIdentifier("game.music")
+    }
+}
+
 private struct HUDPill: ViewModifier {
     let table: TableSurface
 
@@ -101,6 +124,9 @@ struct GameToolbar: View {
 
     var body: some View {
         HStack(spacing: PZSpacing.s) {
+            MusicMenu(table: table)
+                .frame(width: 56)
+
             Button {
                 shuffles += 1
                 viewModel.shuffleTray()

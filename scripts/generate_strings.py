@@ -108,6 +108,13 @@ FEATURES = [
     ("game.progress", "%1$lld of %2$lld pieces placed", "Собрано %1$lld из %2$lld", ["placed", "total"]),
     ("game.trayEmpty", "Every piece in this group is placed.", "Все детали этой группы на месте.", []),
     ("game.looseLeft", "Pieces left on the board: %lld", "Осталось на поле: %lld", ["count"]),
+    ("game.music", "Music", "Музыка", []),
+    ("game.musicOff", "Off", "Выключена", []),
+    ("game.musicCalm", "Calm", "Спокойная", []),
+    ("game.musicRain", "Rainy day", "Дождливый день", []),
+    ("game.musicBox", "Music box", "Музыкальная шкатулка", []),
+    ("game.musicNight", "Starry night", "Звёздная ночь", []),
+    ("game.musicMeadow", "Meadow", "Луг", []),
 
     ("done.badge", "Puzzle complete", "Пазл собран", []),
     ("done.saved", "Saved to My puzzles.", "Сохранено в «Мои пазлы».", []),

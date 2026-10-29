@@ -110,6 +110,13 @@ enum L10n {
         static func progress(_ placed: Int, _ total: Int) -> String { String(localized: "game.progress", defaultValue: "\(placed) of \(total) pieces placed", bundle: .module) }
         static var trayEmpty: String { String(localized: "game.trayEmpty", defaultValue: "Every piece in this group is placed.", bundle: .module) }
         static func looseLeft(_ count: Int) -> String { String(localized: "game.looseLeft", defaultValue: "Pieces left on the board: \(count)", bundle: .module) }
+        static var music: String { String(localized: "game.music", defaultValue: "Music", bundle: .module) }
+        static var musicOff: String { String(localized: "game.musicOff", defaultValue: "Off", bundle: .module) }
+        static var musicCalm: String { String(localized: "game.musicCalm", defaultValue: "Calm", bundle: .module) }
+        static var musicRain: String { String(localized: "game.musicRain", defaultValue: "Rainy day", bundle: .module) }
+        static var musicBox: String { String(localized: "game.musicBox", defaultValue: "Music box", bundle: .module) }
+        static var musicNight: String { String(localized: "game.musicNight", defaultValue: "Starry night", bundle: .module) }
+        static var musicMeadow: String { String(localized: "game.musicMeadow", defaultValue: "Meadow", bundle: .module) }
     }
 
     enum Done {
