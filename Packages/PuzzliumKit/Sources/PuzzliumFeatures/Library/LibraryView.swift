@@ -70,18 +70,46 @@ struct LibraryView: View {
     private var categoryChips: some View {
         ScrollView(.horizontal) {
             HStack(spacing: PZSpacing.s) {
-                PZChip(L10n.Library.all, isSelected: viewModel.filter == .all) {
-                    viewModel.filter = .all
-                }
+                categoryCard(title: L10n.Library.all, filter: .all, item: viewModel.items.first)
                 ForEach(viewModel.categories, id: \.self) { category in
-                    PZChip(category.title, isSelected: viewModel.filter == .category(category)) {
-                        viewModel.filter = .category(category)
-                    }
+                    categoryCard(
+                        title: category.title,
+                        filter: .category(category),
+                        item: viewModel.items.first { $0.puzzle.category == category }
+                    )
                 }
             }
         }
         .scrollIndicators(.hidden)
         .scrollClipDisabled()
+    }
+
+    private func categoryCard(title: String, filter: LibraryViewModel.Filter, item: PuzzleEntry?) -> some View {
+        let selected = viewModel.filter == filter
+        return Button { viewModel.filter = filter } label: {
+            ZStack(alignment: .bottomLeading) {
+                if let item {
+                    PuzzleArtView(source: item.puzzle.image, pixelSize: 240)
+                } else {
+                    PZColor.felt
+                }
+                LinearGradient(colors: [.clear, .black.opacity(0.8)], startPoint: .center, endPoint: .bottom)
+                Text(title)
+                    .font(PZFont.caption.weight(.bold))
+                    .foregroundStyle(.white)
+                    .lineLimit(2)
+                    .padding(PZSpacing.s)
+            }
+            .frame(width: 132, height: 90)
+            .clipShape(RoundedRectangle(cornerRadius: PZRadius.m, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: PZRadius.m, style: .continuous)
+                    .strokeBorder(selected ? PZColor.felt : .clear, lineWidth: 3)
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(title)
+        .accessibilityAddTraits(selected ? .isSelected : [])
     }
 
     @ViewBuilder
