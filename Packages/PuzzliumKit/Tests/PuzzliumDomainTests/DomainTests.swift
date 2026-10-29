@@ -145,7 +145,7 @@ struct HomeFeedTests {
         #expect(feed.continueItems.allSatisfy { $0.progress?.isInProgress == true })
     }
 
-    @Test func dailySkipsPuzzlesSolvedEarlierButKeepsTodays() async throws {
+    @Test func dailySkipsSolvedPuzzlesIncludingTodays() async throws {
         let today = day("2026-10-25")
         let catalog = (1...5).map { puzzle("p\($0)") }
         let plain = DailyPuzzleSelector().puzzle(for: today, in: catalog, calendar: utcCalendar)!
@@ -158,7 +158,7 @@ struct HomeFeedTests {
         let solvedToday = FakeProgress(items: [progress(plain.id, placed: 36, completed: true, completedAt: today)], dates: [today])
         let todayFeed = try await GetHomeFeedUseCase(puzzles: FakePuzzles(puzzles: catalog), progress: solvedToday)
             .execute(now: today, calendar: utcCalendar)
-        #expect(todayFeed.daily == plain)
+        #expect(todayFeed.daily != nil && todayFeed.daily != plain)
     }
 }
 

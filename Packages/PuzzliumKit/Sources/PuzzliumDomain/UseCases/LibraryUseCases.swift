@@ -60,12 +60,9 @@ public struct GetHomeFeedUseCase: Sendable {
         let (puzzleList, progressList, completionDates) = try await (catalog, saved, dates)
 
         let items = GetLibraryUseCase.merge(catalog: puzzleList, progress: progressList)
-        // Puzzles finished on an earlier day are never offered again; today's stays to show "Solved today".
-        let solvedBefore = Set(progressList.filter { progress in
-            guard progress.completedAt != nil || progress.isCompleted else { return false }
-            return !(progress.completedAt.map { calendar.isDate($0, inSameDayAs: now) } ?? false)
-        }.map(\.puzzleID))
-        let daily = selector.puzzle(for: now, in: puzzleList.filter { $0.category != .photos }, excluding: solvedBefore, calendar: calendar)
+        // Solved puzzles are never offered again, so finishing the daily moves the card to the next one.
+        let solved = Set(progressList.filter { $0.completedAt != nil || $0.isCompleted }.map(\.puzzleID))
+        let daily = selector.puzzle(for: now, in: puzzleList.filter { $0.category != .photos }, excluding: solved, calendar: calendar)
         let continueItems = items
             .filter { $0.progress?.isInProgress == true && $0.puzzle.id != daily?.id }
             .sorted { ($0.progress?.updatedAt ?? .distantPast) > ($1.progress?.updatedAt ?? .distantPast) }
