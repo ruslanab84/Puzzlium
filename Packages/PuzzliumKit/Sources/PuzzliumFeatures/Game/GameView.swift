@@ -67,21 +67,42 @@ struct GameView: View {
         }
     }
 
+    /// Wide landscape (iPhone Duo unfolded, iPad) puts the tray beside the board; otherwise
+    /// it sits under it, with bigger pieces once the screen is wide enough to show more of them.
     private var playing: some View {
-        VStack(spacing: 0) {
-            GameHUD(viewModel: viewModel, table: table, onClose: close)
-            BoardView(viewModel: viewModel, boardFrame: boardFrame)
-                .onGeometryChange(for: CGRect.self) { proxy in
-                    proxy.frame(in: .named(Self.space))
-                } action: { frame in
-                    boardFrame = frame
+        GeometryReader { proxy in
+            let size = proxy.size
+            if size.width > size.height && size.width >= 700 {
+                HStack(spacing: 0) {
+                    VStack(spacing: 0) {
+                        GameHUD(viewModel: viewModel, table: table, onClose: close)
+                        board
+                        GameToolbar(viewModel: viewModel, table: table)
+                    }
+                    PieceTrayView(viewModel: viewModel, table: table, boardFrame: boardFrame, axis: .vertical, cell: 80)
+                        .frame(width: 360)
                 }
-                .padding(.horizontal, PZSpacing.l)
-                .padding(.top, PZSpacing.l)
-                .frame(maxWidth: 720, maxHeight: .infinity)
-            GameToolbar(viewModel: viewModel, table: table)
-            PieceTrayView(viewModel: viewModel, table: table, boardFrame: boardFrame)
+            } else {
+                VStack(spacing: 0) {
+                    GameHUD(viewModel: viewModel, table: table, onClose: close)
+                    board
+                    GameToolbar(viewModel: viewModel, table: table)
+                    PieceTrayView(viewModel: viewModel, table: table, boardFrame: boardFrame, cell: size.width >= 600 ? 72 : 64)
+                }
+            }
         }
+    }
+
+    private var board: some View {
+        BoardView(viewModel: viewModel, boardFrame: boardFrame)
+            .onGeometryChange(for: CGRect.self) { proxy in
+                proxy.frame(in: .named(Self.space))
+            } action: { frame in
+                boardFrame = frame
+            }
+            .padding(.horizontal, PZSpacing.l)
+            .padding(.top, PZSpacing.l)
+            .frame(maxWidth: 720, maxHeight: .infinity)
     }
 
     private var closeButton: some View {

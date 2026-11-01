@@ -7,10 +7,11 @@ struct PieceTrayView: View {
     let viewModel: GameViewModel
     let table: TableSurface
     let boardFrame: CGRect
+    /// `.horizontal`: a two-row strip under the board. `.vertical`: a side column next to it.
+    var axis: Axis = .horizontal
+    var cell: CGFloat = 64
 
-    private static let cell: CGFloat = 64
     @Namespace private var chipNamespace
-    private let rows = [GridItem(.fixed(cell), spacing: PZSpacing.s), GridItem(.fixed(cell))]
 
     var body: some View {
         VStack(alignment: .leading, spacing: PZSpacing.m) {
@@ -22,17 +23,23 @@ struct PieceTrayView: View {
             .animation(.spring(response: 0.32, dampingFraction: 0.7), value: viewModel.trayFilter)
             .padding(.horizontal, PZSpacing.l)
 
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: rows, spacing: PZSpacing.s) {
-                    ForEach(viewModel.trayPieces, id: \.self) { piece in
-                        TrayPiece(viewModel: viewModel, piece: piece, size: Self.cell, boardFrame: boardFrame)
+            ScrollView(axis == .horizontal ? .horizontal : .vertical) {
+                if axis == .horizontal {
+                    LazyHGrid(rows: [GridItem(.fixed(cell), spacing: PZSpacing.s), GridItem(.fixed(cell))], spacing: PZSpacing.s) {
+                        pieces
                     }
+                    .padding(.horizontal, PZSpacing.l)
+                } else {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: cell), spacing: PZSpacing.s)], spacing: PZSpacing.s) {
+                        pieces
+                    }
+                    .padding(.horizontal, PZSpacing.l)
                 }
-                .padding(.horizontal, PZSpacing.l)
             }
             .scrollIndicators(.hidden)
             .scrollDisabled(viewModel.draggingPiece != nil)
-            .frame(height: Self.cell * 2 + PZSpacing.s)
+            .frame(height: axis == .horizontal ? cell * 2 + PZSpacing.s : nil)
+            .frame(maxHeight: axis == .vertical ? .infinity : nil)
             .overlay {
                 if viewModel.trayPieces.isEmpty {
                     // Loose pieces still need placing, so "every piece is placed" would be misleading.
@@ -45,12 +52,24 @@ struct PieceTrayView: View {
         }
         .padding(.top, PZSpacing.l)
         .padding(.bottom, PZSpacing.s)
-        .background(
-            UnevenRoundedRectangle(topLeadingRadius: PZRadius.xl, topTrailingRadius: PZRadius.xl, style: .continuous)
-                .fill(table.tray)
-                .ignoresSafeArea(edges: .bottom)
-        )
+        .background {
+            if axis == .horizontal {
+                UnevenRoundedRectangle(topLeadingRadius: PZRadius.xl, topTrailingRadius: PZRadius.xl, style: .continuous)
+                    .fill(table.tray)
+                    .ignoresSafeArea(edges: .bottom)
+            } else {
+                UnevenRoundedRectangle(topLeadingRadius: PZRadius.xl, bottomLeadingRadius: PZRadius.xl, style: .continuous)
+                    .fill(table.tray)
+                    .ignoresSafeArea(edges: [.vertical, .trailing])
+            }
+        }
         .animation(.snappy(duration: 0.25), value: viewModel.trayPieces)
+    }
+
+    private var pieces: some View {
+        ForEach(viewModel.trayPieces, id: \.self) { piece in
+            TrayPiece(viewModel: viewModel, piece: piece, size: cell, boardFrame: boardFrame, scrollAxis: axis)
+        }
     }
 
     private func filterChip(_ filter: TrayFilter, title: String, label: (Int) -> String) -> some View {
@@ -62,6 +81,7 @@ struct PieceTrayView: View {
             HStack(spacing: 6) {
                 Text(title)
                     .font(PZFont.callout.weight(.bold))
+                    .minimumScaleFactor(0.7)
                 Text(verbatim: "\(count)")
                     .font(PZFont.number(.footnote))
                     .contentTransition(.numericText(value: Double(count)))
@@ -99,6 +119,7 @@ private struct TrayPiece: View {
     let piece: Int
     let size: CGFloat
     let boardFrame: CGRect
+    let scrollAxis: Axis
 
     var body: some View {
         let isDragging = viewModel.draggingPiece == piece
@@ -117,7 +138,7 @@ private struct TrayPiece: View {
         .opacity(isDragging ? 0.2 : 1)
         .contentShape(Rectangle())
         .onTapGesture { viewModel.rotate(piece) }
-        .modifier(LiftGesture(fallback: dragGesture, onChanged: { viewModel.drag(piece, to: $0) }, onEnded: endLift))
+        .modifier(LiftGesture(scrollAxis: scrollAxis, fallback: dragGesture, onChanged: { viewModel.drag(piece, to: $0) }, onEnded: endLift))
         .accessibilityElement()
         .accessibilityLabel(L10n.Game.piece(piece + 1))
         .accessibilityIdentifier("game.trayPiece")
@@ -149,16 +170,17 @@ private struct TrayPiece: View {
     }
 }
 
-/// Vertical drag lifts a piece, horizontal swipe scrolls the tray. Direction, not
-/// press timing, decides: a finger that rests a moment before swiping still scrolls.
+/// A drag across the tray's scroll axis lifts a piece, a swipe along it scrolls the tray.
+/// Direction, not press timing, decides: a finger that rests a moment before swiping still scrolls.
 private struct LiftGesture<Fallback: Gesture>: ViewModifier {
+    let scrollAxis: Axis
     let fallback: Fallback
     let onChanged: (CGPoint) -> Void
     let onEnded: (_ dropped: Bool) -> Void
 
     func body(content: Content) -> some View {
         if #available(iOS 18.0, *) {
-            content.gesture(VerticalPan(onChanged: onChanged, onEnded: onEnded))
+            content.gesture(CrossAxisPan(scrollAxis: scrollAxis, onChanged: onChanged, onEnded: onEnded))
         } else {
             content.gesture(fallback)
         }
@@ -166,11 +188,12 @@ private struct LiftGesture<Fallback: Gesture>: ViewModifier {
 }
 
 @available(iOS 18.0, *)
-private struct VerticalPan: UIGestureRecognizerRepresentable {
+private struct CrossAxisPan: UIGestureRecognizerRepresentable {
+    let scrollAxis: Axis
     let onChanged: (CGPoint) -> Void
     let onEnded: (_ dropped: Bool) -> Void
 
-    func makeCoordinator(converter: CoordinateSpaceConverter) -> Coordinator { Coordinator() }
+    func makeCoordinator(converter: CoordinateSpaceConverter) -> Coordinator { Coordinator(scrollAxis: scrollAxis) }
 
     func makeUIGestureRecognizer(context: Context) -> UIPanGestureRecognizer {
         let recognizer = UIPanGestureRecognizer()
@@ -188,10 +211,16 @@ private struct VerticalPan: UIGestureRecognizerRepresentable {
     }
 
     final class Coordinator: NSObject, UIGestureRecognizerDelegate {
+        let scrollAxis: Axis
+
+        init(scrollAxis: Axis) {
+            self.scrollAxis = scrollAxis
+        }
+
         func gestureRecognizerShouldBegin(_ recognizer: UIGestureRecognizer) -> Bool {
             guard let pan = recognizer as? UIPanGestureRecognizer else { return true }
             let velocity = pan.velocity(in: pan.view)
-            return abs(velocity.y) > abs(velocity.x)
+            return scrollAxis == .horizontal ? abs(velocity.y) > abs(velocity.x) : abs(velocity.x) > abs(velocity.y)
         }
     }
 }
