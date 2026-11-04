@@ -1,0 +1,277 @@
+{
+  "identifier": "5B1C0A2E",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "1584054977",
+      "localizations": [
+        {
+          "description": "Every nature picture.",
+          "displayName": "Nature pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Природа».",
+          "displayName": "Набор «Природа»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.nature",
+      "referenceName": "Pack Nature",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "2367401293",
+      "localizations": [
+        {
+          "description": "Every animals picture.",
+          "displayName": "Animals pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Животные».",
+          "displayName": "Набор «Животные»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.animals",
+      "referenceName": "Pack Animals",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "2192946405",
+      "localizations": [
+        {
+          "description": "Every flowers picture.",
+          "displayName": "Flowers pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Цветы».",
+          "displayName": "Набор «Цветы»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.flowers",
+      "referenceName": "Pack Flowers",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "2389567244",
+      "localizations": [
+        {
+          "description": "Every food picture.",
+          "displayName": "Food pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Еда».",
+          "displayName": "Набор «Еда»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.food",
+      "referenceName": "Pack Food",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "3294736800",
+      "localizations": [
+        {
+          "description": "Every illustrations picture.",
+          "displayName": "Illustrations pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Иллюстрации».",
+          "displayName": "Набор «Иллюстрации»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.illustrations",
+      "referenceName": "Pack Illustrations",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "1993234973",
+      "localizations": [
+        {
+          "description": "Every patterns picture.",
+          "displayName": "Patterns pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Узоры».",
+          "displayName": "Набор «Узоры»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.patterns",
+      "referenceName": "Pack Patterns",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "3352706654",
+      "localizations": [
+        {
+          "description": "Every kids picture.",
+          "displayName": "Kids pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Детские».",
+          "displayName": "Набор «Детские»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.kids",
+      "referenceName": "Pack Kids",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "4587443829",
+      "localizations": [
+        {
+          "description": "Every space picture.",
+          "displayName": "Space pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Космос».",
+          "displayName": "Набор «Космос»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.space",
+      "referenceName": "Pack Space",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "2791842593",
+      "localizations": [
+        {
+          "description": "Every planets picture.",
+          "displayName": "Planets pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Планеты».",
+          "displayName": "Набор «Планеты»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.planets",
+      "referenceName": "Pack Planets",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "2625943784",
+      "localizations": [
+        {
+          "description": "Every underwater picture.",
+          "displayName": "Underwater pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Подводный мир».",
+          "displayName": "Набор «Подводный мир»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.underwater",
+      "referenceName": "Pack Underwater",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "9906571166",
+      "localizations": [
+        {
+          "description": "Every cities picture.",
+          "displayName": "Cities pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Города».",
+          "displayName": "Набор «Города»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.cities",
+      "referenceName": "Pack Cities",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "1.99",
+      "familyShareable": true,
+      "internalID": "2497950911",
+      "localizations": [
+        {
+          "description": "Every art picture.",
+          "displayName": "Art pack",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все картинки категории «Искусство».",
+          "displayName": "Набор «Искусство»",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.art",
+      "referenceName": "Pack Art",
+      "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "9.99",
+      "familyShareable": true,
+      "internalID": "6263123080",
+      "localizations": [
+        {
+          "description": "Every category, including packs added later.",
+          "displayName": "All packs",
+          "locale": "en_US"
+        },
+        {
+          "description": "Все категории, включая будущие наборы.",
+          "displayName": "Все наборы",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.pack.all",
+      "referenceName": "All packs",
+      "type": "NonConsumable"
+    }
+  ],
+  "settings": {
+    "_applicationInternalID": "",
+    "_developerTeamID": "58ZSRJHNGW",
+    "_locale": "en_US",
+    "_storefront": "USA"
+  },
+  "subscriptionGroups": [],
+  "version": {
+    "major": 3,
+    "minor": 0
+  }
+}

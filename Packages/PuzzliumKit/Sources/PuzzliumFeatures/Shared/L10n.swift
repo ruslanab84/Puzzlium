@@ -147,4 +147,18 @@ enum L10n {
         static var finishedTitle: String { String(localized: "event.finishedTitle", defaultValue: "Event complete!", bundle: .module) }
         static var finishedBody: String { String(localized: "event.finishedBody", defaultValue: "Every postcard is yours.", bundle: .module) }
     }
+
+    enum Pack {
+        static var eyebrow: String { String(localized: "pack.eyebrow", defaultValue: "Picture pack", bundle: .module) }
+        static var locked: String { String(localized: "pack.locked", defaultValue: "Locked", bundle: .module) }
+        static func count(_ count: Int) -> String { String(localized: "pack.count", defaultValue: "\(count) pictures", bundle: .module) }
+        static func freeNote(_ count: Int) -> String { String(localized: "pack.freeNote", defaultValue: "The first \(count) are free to play.", bundle: .module) }
+        static func more(_ count: Int) -> String { String(localized: "pack.more", defaultValue: "\(count) more pictures in this pack", bundle: .module) }
+        static var unlock: String { String(localized: "pack.unlock", defaultValue: "Unlock", bundle: .module) }
+        static var buy: String { String(localized: "pack.buy", defaultValue: "Unlock pack", bundle: .module) }
+        static var buyAll: String { String(localized: "pack.buyAll", defaultValue: "Unlock all packs", bundle: .module) }
+        static var allNote: String { String(localized: "pack.allNote", defaultValue: "Every category, including packs added later.", bundle: .module) }
+        static var restore: String { String(localized: "pack.restore", defaultValue: "Restore purchases", bundle: .module) }
+        static var unavailable: String { String(localized: "pack.unavailable", defaultValue: "The App Store is unavailable right now.", bundle: .module) }
+    }
 }

@@ -140,6 +140,18 @@ FEATURES = [
     ("event.rewardBody", "Finish every chapter to complete the set.", "Пройдите все главы, чтобы собрать коллекцию.", []),
     ("event.finishedTitle", "Event complete!", "Событие пройдено!", []),
     ("event.finishedBody", "Every postcard is yours.", "Все открытки ваши.", []),
+
+    ("pack.eyebrow", "Picture pack", "Набор картинок", []),
+    ("pack.locked", "Locked", "Закрыто", []),
+    ("pack.count", "%lld pictures", "Картинок: %lld", ["count"]),
+    ("pack.freeNote", "The first %lld are free to play.", "Первые %lld можно собрать бесплатно.", ["count"]),
+    ("pack.more", "%lld more pictures in this pack", "Ещё картинок в наборе: %lld", ["count"]),
+    ("pack.unlock", "Unlock", "Открыть", []),
+    ("pack.buy", "Unlock pack", "Открыть набор", []),
+    ("pack.buyAll", "Unlock all packs", "Открыть все наборы", []),
+    ("pack.allNote", "Every category, including packs added later.", "Все категории, включая будущие наборы.", []),
+    ("pack.restore", "Restore purchases", "Восстановить покупки", []),
+    ("pack.unavailable", "The App Store is unavailable right now.", "App Store сейчас недоступен.", []),
 ]
 
 CATALOG = [

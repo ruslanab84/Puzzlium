@@ -6,6 +6,9 @@ import SwiftUI
 struct LibraryView: View {
     @State private var viewModel: LibraryViewModel
     @Environment(AppRouter.self) private var router
+    @Environment(PackStore.self) private var packs
+    @Environment(\.imageProvider) private var imageProvider
+    @State private var paywall: PuzzleCategory?
     @State private var showsGallery = false
     @State private var showsCamera = false
     @State private var showsPlayground = false
@@ -49,6 +52,11 @@ struct LibraryView: View {
         }
         .playgroundSheet(isPresented: $showsPlayground) { data in Task { await addPhoto(data) } }
         .alert(L10n.Library.photoFailed, isPresented: $photoFailed) {}
+        .sheet(item: $paywall) { category in
+            PackPaywallView(category: category, pictures: viewModel.items.map(\.puzzle).filter { $0.category == category })
+                .environment(packs)
+                .environment(\.imageProvider, imageProvider)
+        }
     }
 
     private var addPhotoMenu: some View {
@@ -123,20 +131,54 @@ struct LibraryView: View {
         } else if viewModel.visibleItems.isEmpty {
             ContentUnavailableView.search(text: viewModel.query)
         } else {
+            let locked = packs.access.lockedIDs(in: viewModel.items)
+            if case let .category(category) = viewModel.filter {
+                packBanner(category, lockedCount: viewModel.visibleItems.filter { locked.contains($0.id) }.count)
+            }
             LazyVGrid(columns: columns, spacing: PZSpacing.l) {
                 ForEach(viewModel.visibleItems) { item in
-                    Button { router.openSetup(for: item.puzzle) } label: {
-                        PuzzleGridCard(item: item)
+                    let isLocked = locked.contains(item.id)
+                    Button {
+                        if isLocked { paywall = item.puzzle.category } else { router.openSetup(for: item.puzzle) }
+                    } label: {
+                        PuzzleGridCard(item: item, isLocked: isLocked)
                     }
                     .buttonStyle(.plain)
                 }
             }
         }
     }
+
+    @ViewBuilder
+    private func packBanner(_ category: PuzzleCategory, lockedCount: Int) -> some View {
+        if lockedCount > 0 {
+            Button { paywall = category } label: {
+                HStack(spacing: PZSpacing.m) {
+                    Image(systemName: "lock.open.fill")
+                        .foregroundStyle(PZColor.amber)
+                    Text(L10n.Pack.more(lockedCount))
+                        .font(PZFont.callout.weight(.semibold))
+                        .foregroundStyle(PZColor.onFelt)
+                        .multilineTextAlignment(.leading)
+                    Spacer(minLength: 0)
+                    Text(packs.product(for: category)?.displayPrice ?? L10n.Pack.unlock)
+                        .font(PZFont.callout.weight(.bold))
+                        .foregroundStyle(Color(hex: 0x18201D))
+                        .padding(.horizontal, PZSpacing.m)
+                        .frame(minHeight: 32)
+                        .background(PZColor.amber, in: Capsule())
+                }
+                .padding(PZSpacing.l)
+                .background(PZColor.felt, in: RoundedRectangle(cornerRadius: PZRadius.l, style: .continuous))
+            }
+            .buttonStyle(.plain)
+        }
+    }
 }
 
 struct PuzzleGridCard: View {
     let item: PuzzleEntry
+    var isLocked = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: PZSpacing.s) {
@@ -144,6 +186,7 @@ struct PuzzleGridCard: View {
                 .aspectRatio(1.05, contentMode: .fit)
                 .overlay(alignment: .topLeading) { newBadge }
                 .overlay(alignment: .topTrailing) { statusBadge }
+                .overlay(alignment: .topTrailing) { lockBadge }
                 .clipShape(RoundedRectangle(cornerRadius: PZRadius.l, style: .continuous))
             VStack(alignment: .leading, spacing: 2) {
                 Text(item.puzzle.title)
@@ -174,6 +217,19 @@ struct PuzzleGridCard: View {
                 .frame(minHeight: 24)
                 .background(PZColor.amber, in: Capsule())
                 .padding(10)
+        }
+    }
+
+    @ViewBuilder
+    private var lockBadge: some View {
+        if isLocked {
+            Image(systemName: "lock.fill")
+                .font(.system(size: 12, weight: .heavy))
+                .foregroundStyle(PZColor.onFelt)
+                .frame(width: 28, height: 28)
+                .background(PZColor.felt, in: Circle())
+                .padding(10)
+                .accessibilityLabel(L10n.Pack.locked)
         }
     }
 

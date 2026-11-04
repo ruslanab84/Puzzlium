@@ -34,7 +34,10 @@ public struct Puzzle: Identifiable, Hashable, Codable, Sendable {
     }
 }
 
-public enum PuzzleCategory: String, CaseIterable, Codable, Sendable {
+public enum PuzzleCategory: String, CaseIterable, Codable, Sendable, Identifiable {
+    public var id: String { rawValue }
+
+
     /// Pictures the player added from their gallery or camera.
     case photos
     case nature

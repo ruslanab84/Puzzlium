@@ -84,6 +84,27 @@ struct DailyPuzzleSelectorTests {
     }
 }
 
+@Suite("PackAccess")
+struct PackAccessTests {
+    private func entry(_ id: String, _ category: PuzzleCategory, _ status: PuzzleEntry.Status = .notStarted) -> PuzzleEntry {
+        PuzzleEntry(puzzle: Puzzle(id: id, title: id, category: category, image: .bundled(id)), status: status, progress: nil)
+    }
+
+    private var entries: [PuzzleEntry] {
+        (1...5).map { entry("c\($0)", .cities) } + [entry("p1", .photos)]
+            + (1...4).map { entry("a\($0)", .art, $0 == 4 ? .inProgress(fraction: 0.5) : .notStarted) }
+    }
+
+    @Test func locksAllButFreeSampleOfUnownedCategories() {
+        #expect(PackAccess().lockedIDs(in: entries) == ["c4", "c5"])
+    }
+
+    @Test func ownedPackOrAllPacksUnlock() {
+        #expect(PackAccess(owned: [.cities]).lockedIDs(in: entries).isEmpty)
+        #expect(PackAccess(ownsAll: true).lockedIDs(in: entries).isEmpty)
+    }
+}
+
 @Suite("GetLibraryUseCase")
 struct LibraryMergeTests {
     @Test func mapsStatuses() {
