@@ -70,8 +70,22 @@ struct LibraryView: View {
             .environment(\.ads, ads)
         }
         .safeAreaInset(edge: .bottom) {
-            if let ads, !packs.access.hasPurchased {
-                ads.banner()
+            if let ads, packs.access.showsAds {
+                VStack(spacing: 0) {
+                    if let product = packs.removeAds {
+                        Button {
+                            Task { await packs.purchase(product) }
+                        } label: {
+                            Text(verbatim: "\(L10n.Pack.removeAds) · \(product.displayPrice)")
+                        }
+                        .font(PZFont.footnote.weight(.semibold))
+                        .foregroundStyle(PZColor.amber)
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                        .background(PZColor.ground)
+                        .disabled(packs.isPurchasing)
+                    }
+                    ads.banner()
+                }
             }
         }
     }

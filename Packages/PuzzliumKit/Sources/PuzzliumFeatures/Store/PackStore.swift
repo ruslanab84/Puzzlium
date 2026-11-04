@@ -11,6 +11,7 @@ import StoreKit
 @MainActor
 final class PackStore {
     nonisolated static let allPacksID = "RuslanAbd.Puzzlium.pack.all"
+    nonisolated static let removeAdsID = "RuslanAbd.Puzzlium.removeAds"
 
     nonisolated static func productID(for category: PuzzleCategory) -> String {
         "RuslanAbd.Puzzlium.pack.\(category.rawValue)"
@@ -22,12 +23,13 @@ final class PackStore {
 
     func product(for category: PuzzleCategory) -> Product? { products[Self.productID(for: category)] }
     var allPacks: Product? { products[Self.allPacksID] }
+    var removeAds: Product? { products[Self.removeAdsID] }
 
     /// Loads ownership and prices, then follows transactions (Ask to Buy, refunds, other devices)
     /// for as long as the calling task lives.
     func run() async {
         await refreshEntitlements()
-        let ids = PuzzleCategory.allCases.filter { $0 != .photos }.map(Self.productID) + [Self.allPacksID]
+        let ids = PuzzleCategory.allCases.filter { $0 != .photos }.map(Self.productID) + [Self.allPacksID, Self.removeAdsID]
         do {
             products = Dictionary(uniqueKeysWithValues: try await Product.products(for: ids).map { ($0.id, $0) })
         } catch {
@@ -75,6 +77,8 @@ final class PackStore {
             guard case let .verified(transaction) = result, transaction.revocationDate == nil else { continue }
             if transaction.productID == Self.allPacksID {
                 access.ownsAll = true
+            } else if transaction.productID == Self.removeAdsID {
+                access.adsRemoved = true
             } else if let category = PuzzleCategory.allCases.first(where: { Self.productID(for: $0) == transaction.productID }) {
                 access.owned.insert(category)
             }

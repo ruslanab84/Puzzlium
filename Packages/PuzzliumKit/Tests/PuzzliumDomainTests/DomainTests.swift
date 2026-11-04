@@ -107,8 +107,14 @@ struct PackAccessTests {
     @Test func adUnlocksSinglePictureWithoutCountingAsPurchase() {
         let access = PackAccess(adUnlocked: ["c5"])
         #expect(access.lockedIDs(in: entries) == ["c4"])
-        #expect(!access.hasPurchased)
-        #expect(PackAccess(owned: [.art]).hasPurchased)
+        #expect(access.showsAds)
+    }
+
+    @Test func onlyRemoveAdsOrAllPacksHideAds() {
+        #expect(PackAccess(owned: [.art]).showsAds)
+        #expect(!PackAccess(adsRemoved: true).showsAds)
+        #expect(!PackAccess(ownsAll: true).showsAds)
+        #expect(PackAccess(adsRemoved: true).lockedIDs(in: entries) == ["c4", "c5"])
     }
 }
 

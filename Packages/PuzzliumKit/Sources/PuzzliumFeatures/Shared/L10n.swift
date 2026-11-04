@@ -161,6 +161,7 @@ enum L10n {
         static var restore: String { String(localized: "pack.restore", defaultValue: "Restore purchases", bundle: .module) }
         static var unavailable: String { String(localized: "pack.unavailable", defaultValue: "The App Store is unavailable right now.", bundle: .module) }
         static var watchAd: String { String(localized: "pack.watchAd", defaultValue: "Watch an ad to open this picture", bundle: .module) }
+        static var removeAds: String { String(localized: "pack.removeAds", defaultValue: "Remove ads", bundle: .module) }
         static var adUnavailable: String { String(localized: "pack.adUnavailable", defaultValue: "No ad available right now. Try again later.", bundle: .module) }
     }
 }

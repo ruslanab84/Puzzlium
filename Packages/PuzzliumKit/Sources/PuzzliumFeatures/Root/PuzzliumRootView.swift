@@ -57,12 +57,12 @@ public struct PuzzliumRootView: View {
         }
     }
 
-    /// Every third closed game shows an interstitial, never to someone who bought a pack.
+    /// Every third closed game shows an interstitial, unless ads were bought off.
     // ponytail: counter resets on launch; persist it if players restart the app to dodge ads.
     private func gameDismissed() {
         router.gameDismissed()
         gamesClosed += 1
-        guard gamesClosed.isMultiple(of: 3), !packs.access.hasPurchased, let ads = dependencies.ads else { return }
+        guard gamesClosed.isMultiple(of: 3), packs.access.showsAds, let ads = dependencies.ads else { return }
         Task { await ads.showInterstitial() }
     }
 }

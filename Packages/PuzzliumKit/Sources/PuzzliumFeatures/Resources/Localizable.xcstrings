@@ -2075,6 +2075,23 @@
         }
       }
     },
+    "pack.removeAds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove ads"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Убрать рекламу"
+          }
+        }
+      }
+    },
     "pack.adUnavailable": {
       "extractionState": "manual",
       "localizations": {

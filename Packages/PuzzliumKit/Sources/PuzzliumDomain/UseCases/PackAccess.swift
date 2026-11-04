@@ -10,15 +10,19 @@ public struct PackAccess: Sendable, Equatable {
     public var ownsAll: Bool
     /// Single pictures opened by watching a rewarded ad.
     public var adUnlocked: Set<String>
+    /// The "remove ads" purchase.
+    public var adsRemoved: Bool
 
-    public init(owned: Set<PuzzleCategory> = [], ownsAll: Bool = false, adUnlocked: Set<String> = []) {
+    public init(owned: Set<PuzzleCategory> = [], ownsAll: Bool = false, adUnlocked: Set<String> = [], adsRemoved: Bool = false) {
         self.owned = owned
         self.ownsAll = ownsAll
         self.adUnlocked = adUnlocked
+        self.adsRemoved = adsRemoved
     }
 
-    /// Anyone who bought a pack never sees banners or interstitials.
-    public var hasPurchased: Bool { ownsAll || !owned.isEmpty }
+    /// Banners and interstitials. Off after "remove ads" or "all packs"; a single $0.99 pack
+    /// keeps them, otherwise it would undercut "remove ads". Rewarded ads stay: they're opt-in.
+    public var showsAds: Bool { !(adsRemoved || ownsAll) }
 
     public func isUnlocked(_ category: PuzzleCategory) -> Bool {
         ownsAll || category == .photos || owned.contains(category)

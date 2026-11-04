@@ -153,6 +153,7 @@ FEATURES = [
     ("pack.restore", "Restore purchases", "Восстановить покупки", []),
     ("pack.unavailable", "The App Store is unavailable right now.", "App Store сейчас недоступен.", []),
     ("pack.watchAd", "Watch an ad to open this picture", "Открыть картинку за рекламу", []),
+    ("pack.removeAds", "Remove ads", "Убрать рекламу", []),
     ("pack.adUnavailable", "No ad available right now. Try again later.", "Реклама сейчас недоступна. Попробуйте позже.", []),
 ]
 

@@ -261,6 +261,26 @@
       "productID": "RuslanAbd.Puzzlium.pack.all",
       "referenceName": "All packs",
       "type": "NonConsumable"
+    },
+    {
+      "displayPrice": "3.99",
+      "familyShareable": true,
+      "internalID": "7310482615",
+      "localizations": [
+        {
+          "description": "No banners or full-screen ads.",
+          "displayName": "Remove ads",
+          "locale": "en_US"
+        },
+        {
+          "description": "Без баннеров и полноэкранной рекламы.",
+          "displayName": "Без рекламы",
+          "locale": "ru"
+        }
+      ],
+      "productID": "RuslanAbd.Puzzlium.removeAds",
+      "referenceName": "Remove ads",
+      "type": "NonConsumable"
     }
   ],
   "settings": {
