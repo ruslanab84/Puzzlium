@@ -56,7 +56,9 @@ struct PieceTrayView: View {
             if axis == .horizontal {
                 UnevenRoundedRectangle(topLeadingRadius: PZRadius.xl, topTrailingRadius: PZRadius.xl, style: .continuous)
                     .fill(table.tray)
-                    .ignoresSafeArea(edges: .bottom)
+                    // Side insets too: on iPhone Duo the trailing inset holds the clock, and the
+                    // panel must still reach the screen edge the pieces scroll under.
+                    .ignoresSafeArea(edges: [.bottom, .horizontal])
             } else {
                 UnevenRoundedRectangle(topLeadingRadius: PZRadius.xl, bottomLeadingRadius: PZRadius.xl, style: .continuous)
                     .fill(table.tray)

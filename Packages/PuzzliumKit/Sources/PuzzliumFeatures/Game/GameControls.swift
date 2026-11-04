@@ -88,7 +88,7 @@ private struct MusicMenu: View {
         }
         .menuStyle(.button)
         .labelStyle(.iconOnly)
-        .buttonStyle(GameKeyButtonStyle(face: table.raised, edge: .black.opacity(0.28), foreground: table.content))
+        .buttonStyle(GameKeyButtonStyle(face: table.raised, edge: .black.opacity(0.28), foreground: table.content, base: table.color))
         .accessibilityValue(music.track.title)
         .accessibilityIdentifier("game.music")
     }
@@ -137,7 +137,7 @@ struct GameToolbar: View {
                     Text(L10n.Game.shuffle)
                 }
             }
-            .buttonStyle(GameKeyButtonStyle(face: table.raised, edge: .black.opacity(0.28), foreground: table.content))
+            .buttonStyle(GameKeyButtonStyle(face: table.raised, edge: .black.opacity(0.28), foreground: table.content, base: table.color))
             .accessibilityIdentifier("game.shuffle")
 
             Button(action: viewModel.useHint) {
@@ -169,6 +169,8 @@ private struct GameKeyButtonStyle: ButtonStyle {
     let face: Color
     let edge: Color
     let foreground: Color
+    /// Opaque fill under a translucent face, so the edge below doesn't show through it.
+    var base: Color = .clear
     @Environment(\.isEnabled) private var isEnabled
 
     private let depth: CGFloat = 5
@@ -181,6 +183,7 @@ private struct GameKeyButtonStyle: ButtonStyle {
             .foregroundStyle(foreground)
             .frame(maxWidth: .infinity, minHeight: 44)
             .background(face, in: shape)
+            .background(base, in: shape)
             .overlay(shape.strokeBorder(.white.opacity(0.18), lineWidth: 1))
             .offset(y: sink)
             .background(edge, in: shape.offset(y: depth))
