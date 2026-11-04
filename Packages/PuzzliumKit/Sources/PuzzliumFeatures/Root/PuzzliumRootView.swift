@@ -6,7 +6,6 @@ public struct PuzzliumRootView: View {
     @State private var router = AppRouter()
     @State private var packs = PackStore()
     @State private var showIntro = true
-    @State private var gamesClosed = 0
 
     public init(dependencies: FeatureDependencies) {
         self.dependencies = dependencies
@@ -57,12 +56,10 @@ public struct PuzzliumRootView: View {
         }
     }
 
-    /// Every third closed game shows an interstitial, unless ads were bought off.
-    // ponytail: counter resets on launch; persist it if players restart the app to dodge ads.
+    /// Every closed game shows an interstitial, unless ads were bought off.
     private func gameDismissed() {
         router.gameDismissed()
-        gamesClosed += 1
-        guard gamesClosed.isMultiple(of: 3), packs.access.showsAds, let ads = dependencies.ads else { return }
+        guard packs.access.showsAds, let ads = dependencies.ads else { return }
         Task { await ads.showInterstitial() }
     }
 }
