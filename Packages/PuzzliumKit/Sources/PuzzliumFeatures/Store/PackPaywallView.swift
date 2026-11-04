@@ -22,7 +22,7 @@ struct PackPaywallView: View {
                 Text(category.title)
                     .font(PZFont.largeTitle)
                     .foregroundStyle(PZColor.onFelt)
-                Text("\(L10n.Pack.count(pictures.count)) · \(L10n.Pack.freeNote(PackAccess.freePerCategory))")
+                Text(verbatim: "\(L10n.Pack.count(pictures.count)) · \(L10n.Pack.freeNote(PackAccess.freePerCategory))")
                     .font(PZFont.callout)
                     .foregroundStyle(PZColor.onFeltMuted)
                     .multilineTextAlignment(.center)
