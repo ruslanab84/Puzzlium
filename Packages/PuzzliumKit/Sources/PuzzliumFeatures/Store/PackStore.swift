@@ -61,8 +61,16 @@ final class PackStore {
         await refreshEntitlements()
     }
 
+    /// Keeps a picture opened by a rewarded ad. Stored locally; reinstalling locks it again.
+    func unlockWithAd(_ puzzleID: String) {
+        access.adUnlocked.insert(puzzleID)
+        UserDefaults.standard.set(Array(access.adUnlocked), forKey: Self.adUnlockedKey)
+    }
+
+    private static let adUnlockedKey = "adUnlockedPuzzles"
+
     private func refreshEntitlements() async {
-        var access = PackAccess()
+        var access = PackAccess(adUnlocked: Set(UserDefaults.standard.stringArray(forKey: Self.adUnlockedKey) ?? []))
         for await result in Transaction.currentEntitlements {
             guard case let .verified(transaction) = result, transaction.revocationDate == nil else { continue }
             if transaction.productID == Self.allPacksID {

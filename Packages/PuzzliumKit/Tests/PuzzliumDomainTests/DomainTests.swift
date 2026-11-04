@@ -103,6 +103,13 @@ struct PackAccessTests {
         #expect(PackAccess(owned: [.cities]).lockedIDs(in: entries).isEmpty)
         #expect(PackAccess(ownsAll: true).lockedIDs(in: entries).isEmpty)
     }
+
+    @Test func adUnlocksSinglePictureWithoutCountingAsPurchase() {
+        let access = PackAccess(adUnlocked: ["c5"])
+        #expect(access.lockedIDs(in: entries) == ["c4"])
+        #expect(!access.hasPurchased)
+        #expect(PackAccess(owned: [.art]).hasPurchased)
+    }
 }
 
 @Suite("GetLibraryUseCase")

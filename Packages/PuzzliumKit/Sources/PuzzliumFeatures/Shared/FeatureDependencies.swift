@@ -12,6 +12,8 @@ public struct FeatureDependencies: Sendable {
     public let analytics: any AnalyticsTracking
     /// Current level event; `nil` hides it.
     public let event: PuzzleEvent?
+    /// Ad network; `nil` shows no ads (tests, previews).
+    public let ads: (any AdServing)?
     public let now: @Sendable () -> Date
 
     public init(
@@ -21,6 +23,7 @@ public struct FeatureDependencies: Sendable {
         images: any PuzzleImageProviding,
         analytics: any AnalyticsTracking,
         event: PuzzleEvent? = nil,
+        ads: (any AdServing)? = nil,
         now: @escaping @Sendable () -> Date = { Date() }
     ) {
         self.puzzles = puzzles
@@ -29,10 +32,22 @@ public struct FeatureDependencies: Sendable {
         self.images = images
         self.analytics = analytics
         self.event = event
+        self.ads = ads
         self.now = now
     }
 }
 
+/// Ad network seen by features. The SDK itself lives in the app target.
+@MainActor
+public protocol AdServing: AnyObject, Sendable {
+    /// Shows a rewarded video; `true` only when it was watched to the end.
+    func showRewarded() async -> Bool
+    /// Shows a full-screen ad if one is loaded; returns when it closes.
+    func showInterstitial() async
+    func banner() -> AnyView
+}
+
 extension EnvironmentValues {
     @Entry var imageProvider: (any PuzzleImageProviding)?
+    @Entry var ads: (any AdServing)?
 }

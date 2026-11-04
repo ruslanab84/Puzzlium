@@ -8,7 +8,10 @@ struct LibraryView: View {
     @Environment(AppRouter.self) private var router
     @Environment(PackStore.self) private var packs
     @Environment(\.imageProvider) private var imageProvider
-    @State private var paywall: PuzzleCategory?
+    @State private var paywall: Paywall?
+    /// Picture opened by an ad; its setup sheet waits until the paywall is gone.
+    @State private var openAfterPaywall: Puzzle?
+    @Environment(\.ads) private var ads
     @State private var showsGallery = false
     @State private var showsCamera = false
     @State private var showsPlayground = false
@@ -52,10 +55,24 @@ struct LibraryView: View {
         }
         .playgroundSheet(isPresented: $showsPlayground) { data in Task { await addPhoto(data) } }
         .alert(L10n.Library.photoFailed, isPresented: $photoFailed) {}
-        .sheet(item: $paywall) { category in
-            PackPaywallView(category: category, pictures: viewModel.items.map(\.puzzle).filter { $0.category == category })
-                .environment(packs)
-                .environment(\.imageProvider, imageProvider)
+        .sheet(item: $paywall, onDismiss: {
+            if let puzzle = openAfterPaywall { router.openSetup(for: puzzle) }
+            openAfterPaywall = nil
+        }) { paywall in
+            PackPaywallView(
+                category: paywall.category,
+                pictures: viewModel.items.map(\.puzzle).filter { $0.category == paywall.category },
+                tapped: paywall.tapped,
+                onAdUnlock: { openAfterPaywall = $0 }
+            )
+            .environment(packs)
+            .environment(\.imageProvider, imageProvider)
+            .environment(\.ads, ads)
+        }
+        .safeAreaInset(edge: .bottom) {
+            if let ads, !packs.access.hasPurchased {
+                ads.banner()
+            }
         }
     }
 
@@ -139,7 +156,11 @@ struct LibraryView: View {
                 ForEach(viewModel.visibleItems) { item in
                     let isLocked = locked.contains(item.id)
                     Button {
-                        if isLocked { paywall = item.puzzle.category } else { router.openSetup(for: item.puzzle) }
+                        if isLocked {
+                            paywall = Paywall(category: item.puzzle.category, tapped: item.puzzle)
+                        } else {
+                            router.openSetup(for: item.puzzle)
+                        }
                     } label: {
                         PuzzleGridCard(item: item, isLocked: isLocked)
                     }
@@ -152,7 +173,7 @@ struct LibraryView: View {
     @ViewBuilder
     private func packBanner(_ category: PuzzleCategory, lockedCount: Int) -> some View {
         if lockedCount > 0 {
-            Button { paywall = category } label: {
+            Button { paywall = Paywall(category: category) } label: {
                 HStack(spacing: PZSpacing.m) {
                     Image(systemName: "lock.open.fill")
                         .foregroundStyle(PZColor.amber)
@@ -174,6 +195,13 @@ struct LibraryView: View {
             .buttonStyle(.plain)
         }
     }
+}
+
+/// What the pack sheet offers: the category, plus a single-picture ad unlock when a locked card was tapped.
+private struct Paywall: Identifiable {
+    let category: PuzzleCategory
+    var tapped: Puzzle?
+    var id: String { "\(category.rawValue)/\(tapped?.id ?? "")" }
 }
 
 struct PuzzleGridCard: View {

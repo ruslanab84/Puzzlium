@@ -8,9 +8,14 @@ struct PackPaywallView: View {
     let category: PuzzleCategory
     /// The category's pictures in catalog order; the first few are the free sample.
     let pictures: [Puzzle]
+    /// The locked picture that was tapped; offers a rewarded ad for just this one.
+    var tapped: Puzzle?
+    var onAdUnlock: (Puzzle) -> Void = { _ in }
 
     @Environment(PackStore.self) private var store
+    @Environment(\.ads) private var ads
     @Environment(\.dismiss) private var dismiss
+    @State private var adFailed = false
 
     var body: some View {
         VStack(spacing: PZSpacing.l) {
@@ -41,6 +46,7 @@ struct PackPaywallView: View {
                 .padding(PZSpacing.l)
         }
         .disabled(store.isPurchasing)
+        .alert(L10n.Pack.adUnavailable, isPresented: $adFailed) {}
         // Purchase, restore or an approved Ask to Buy all land here.
         .onChange(of: store.access.isUnlocked(category)) { _, unlocked in
             if unlocked { dismiss() }
@@ -86,6 +92,19 @@ struct PackPaywallView: View {
                 Text(L10n.Pack.allNote)
                     .font(PZFont.caption)
                     .foregroundStyle(PZColor.onFeltMuted)
+            }
+            if let tapped, let ads {
+                Button(L10n.Pack.watchAd, systemImage: "play.rectangle") {
+                    Task {
+                        guard await ads.showRewarded() else { adFailed = true; return }
+                        store.unlockWithAd(tapped.id)
+                        onAdUnlock(tapped)
+                        dismiss()
+                    }
+                }
+                .font(PZFont.callout.weight(.semibold))
+                .foregroundStyle(PZColor.amber)
+                .frame(minHeight: 44)
             }
             if store.products.isEmpty {
                 Text(L10n.Pack.unavailable)

@@ -6,6 +6,7 @@ public struct PuzzliumRootView: View {
     @State private var router = AppRouter()
     @State private var packs = PackStore()
     @State private var showIntro = true
+    @State private var gamesClosed = 0
 
     public init(dependencies: FeatureDependencies) {
         self.dependencies = dependencies
@@ -42,16 +43,26 @@ public struct PuzzliumRootView: View {
         .environment(router)
         .environment(packs)
         .environment(\.imageProvider, dependencies.images)
+        .environment(\.ads, dependencies.ads)
         .task { await packs.run() }
         .sheet(item: $router.setupPuzzle, onDismiss: { router.setupDismissed() }) { puzzle in
             PuzzleSetupView(puzzle: puzzle, dependencies: dependencies)
                 .environment(router)
                 .environment(\.imageProvider, dependencies.images)
         }
-        .fullScreenCover(item: $router.activeGame, onDismiss: { router.gameDismissed() }) { configuration in
+        .fullScreenCover(item: $router.activeGame, onDismiss: gameDismissed) { configuration in
             GameView(configuration: configuration, dependencies: dependencies)
                 .environment(router)
                 .environment(\.imageProvider, dependencies.images)
         }
+    }
+
+    /// Every third closed game shows an interstitial, never to someone who bought a pack.
+    // ponytail: counter resets on launch; persist it if players restart the app to dodge ads.
+    private func gameDismissed() {
+        router.gameDismissed()
+        gamesClosed += 1
+        guard gamesClosed.isMultiple(of: 3), !packs.access.hasPurchased, let ads = dependencies.ads else { return }
+        Task { await ads.showInterstitial() }
     }
 }

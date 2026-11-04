@@ -2057,6 +2057,40 @@
           }
         }
       }
+    },
+    "pack.watchAd": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watch an ad to open this picture"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть картинку за рекламу"
+          }
+        }
+      }
+    },
+    "pack.adUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No ad available right now. Try again later."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Реклама сейчас недоступна. Попробуйте позже."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -19,6 +19,8 @@ final class AppContainer {
         let client: (any HTTPClient)? = AppConfiguration.apiBaseURL.map {
             URLSessionHTTPClient(configuration: APIConfiguration(baseURL: $0))
         }
+        let ads = UnityAdsService()
+        ads.start()
         return AppContainer(
             dependencies: FeatureDependencies(
                 puzzles: DefaultPuzzleRepository(client: client),
@@ -26,7 +28,8 @@ final class AppContainer {
                 preferences: UserDefaultsPreferencesRepository(),
                 images: PuzzleImageLoader(),
                 analytics: LogAnalyticsTracker(),
-                event: BundledEvent.autumn
+                event: BundledEvent.autumn,
+                ads: ads
             )
         )
     }

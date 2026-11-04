@@ -152,6 +152,8 @@ FEATURES = [
     ("pack.allNote", "Every category, including packs added later.", "Все категории, включая будущие наборы.", []),
     ("pack.restore", "Restore purchases", "Восстановить покупки", []),
     ("pack.unavailable", "The App Store is unavailable right now.", "App Store сейчас недоступен.", []),
+    ("pack.watchAd", "Watch an ad to open this picture", "Открыть картинку за рекламу", []),
+    ("pack.adUnavailable", "No ad available right now. Try again later.", "Реклама сейчас недоступна. Попробуйте позже.", []),
 ]
 
 CATALOG = [

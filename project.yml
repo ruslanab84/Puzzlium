@@ -20,6 +20,9 @@ settings:
 packages:
   PuzzliumKit:
     path: Packages/PuzzliumKit
+  UnityAds:
+    url: https://github.com/Unity-Technologies/Unity-Ads-Swift-Package
+    exactVersion: 4.21.0
 
 targets:
   Puzzlium:
@@ -40,6 +43,7 @@ targets:
         product: PuzzliumDomain
       - package: PuzzliumKit
         product: PuzzliumCore
+      - package: UnityAds
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: RuslanAbd.Puzzlium
