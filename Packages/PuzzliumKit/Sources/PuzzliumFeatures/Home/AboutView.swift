@@ -3,9 +3,9 @@ import SwiftUI
 
 /// Links App Review expects inside the app: privacy policy, terms, support. Plus restore.
 enum AppLinks {
-    #warning("Set the published privacy policy and support URLs before App Store submission")
-    static let privacy = URL(string: "https://example.com/puzzlium/privacy")!
-    static let support = URL(string: "https://example.com/puzzlium/support")!
+    /// Published from docs/ via GitHub Pages.
+    static let privacy = URL(string: "https://ruslanab84.github.io/Puzzlium/privacy.html")!
+    static let support = URL(string: "https://github.com/ruslanab84/Puzzlium/issues")!
     /// Apple's standard EULA; replace if a custom EULA is set in App Store Connect.
     static let terms = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
 }
