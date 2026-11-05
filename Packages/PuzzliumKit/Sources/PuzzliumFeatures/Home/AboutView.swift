@@ -5,7 +5,7 @@ import SwiftUI
 enum AppLinks {
     /// Published from docs/ via GitHub Pages.
     static let privacy = URL(string: "https://ruslanab84.github.io/Puzzlium/privacy.html")!
-    static let support = URL(string: "https://github.com/ruslanab84/Puzzlium/issues")!
+    static let support = URL(string: "https://ruslanab84.github.io/Puzzlium/support.html")!
     /// Apple's standard EULA; replace if a custom EULA is set in App Store Connect.
     static let terms = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
 }
