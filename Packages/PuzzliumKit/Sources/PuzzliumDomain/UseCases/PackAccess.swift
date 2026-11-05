@@ -5,6 +5,14 @@ import Foundation
 public struct PackAccess: Sendable, Equatable {
     public static let freePerCategory = 3
 
+    /// App Store product IDs. App Store Connect and Puzzlium.storekit must use the same ones.
+    public static let allPacksID = "RuslanAbd.Puzzlium.pack.all"
+    public static let removeAdsID = "RuslanAbd.Puzzlium.removeAds"
+
+    public static func productID(for category: PuzzleCategory) -> String {
+        "RuslanAbd.Puzzlium.pack.\(category.rawValue)"
+    }
+
     public var owned: Set<PuzzleCategory>
     /// The "all packs" purchase, which also covers categories added later.
     public var ownsAll: Bool
@@ -23,6 +31,17 @@ public struct PackAccess: Sendable, Equatable {
     /// Banners and interstitials. Off after "remove ads" or "all packs"; a single $0.99 pack
     /// keeps them, otherwise it would undercut "remove ads". Rewarded ads stay: they're opt-in.
     public var showsAds: Bool { !(adsRemoved || ownsAll) }
+
+    /// Opens whatever an owned product ID stands for; unknown IDs are ignored.
+    public mutating func grant(_ productID: String) {
+        if productID == Self.allPacksID {
+            ownsAll = true
+        } else if productID == Self.removeAdsID {
+            adsRemoved = true
+        } else if let category = PuzzleCategory.allCases.first(where: { Self.productID(for: $0) == productID }) {
+            owned.insert(category)
+        }
+    }
 
     public func isUnlocked(_ category: PuzzleCategory) -> Bool {
         ownsAll || category == .photos || owned.contains(category)

@@ -110,6 +110,18 @@ struct PackAccessTests {
         #expect(access.showsAds)
     }
 
+    @Test func grantingProductIDsOpensWhatWasBought() {
+        var access = PackAccess()
+        access.grant(PackAccess.productID(for: .cities))
+        #expect(access.owned == [.cities])
+        #expect(access.lockedIDs(in: entries).isEmpty)
+        access.grant("unknown.product")
+        access.grant(PackAccess.removeAdsID)
+        #expect(access.adsRemoved && !access.ownsAll)
+        access.grant(PackAccess.allPacksID)
+        #expect(access.ownsAll)
+    }
+
     @Test func onlyRemoveAdsOrAllPacksHideAds() {
         #expect(PackAccess(owned: [.art]).showsAds)
         #expect(!PackAccess(adsRemoved: true).showsAds)

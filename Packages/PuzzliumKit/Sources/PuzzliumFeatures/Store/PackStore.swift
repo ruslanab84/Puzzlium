@@ -10,11 +10,11 @@ import StoreKit
 @Observable
 @MainActor
 final class PackStore {
-    nonisolated static let allPacksID = "RuslanAbd.Puzzlium.pack.all"
-    nonisolated static let removeAdsID = "RuslanAbd.Puzzlium.removeAds"
+    nonisolated static let allPacksID = PackAccess.allPacksID
+    nonisolated static let removeAdsID = PackAccess.removeAdsID
 
     nonisolated static func productID(for category: PuzzleCategory) -> String {
-        "RuslanAbd.Puzzlium.pack.\(category.rawValue)"
+        PackAccess.productID(for: category)
     }
 
     private(set) var access = PackAccess()
@@ -36,8 +36,11 @@ final class PackStore {
             Log.ui.error("Loading products failed: \(String(describing: error), privacy: .public)")
         }
         for await update in Transaction.updates {
-            if case let .verified(transaction) = update { await transaction.finish() }
             await refreshEntitlements()
+            if case let .verified(transaction) = update {
+                if transaction.revocationDate == nil { access.grant(transaction.productID) }
+                await transaction.finish()
+            }
         }
     }
 
@@ -46,9 +49,20 @@ final class PackStore {
         isPurchasing = true
         defer { isPurchasing = false }
         do {
-            guard case let .success(.verified(transaction)) = try await product.purchase() else { return }
-            await transaction.finish()
-            await refreshEntitlements()
+            switch try await product.purchase() {
+            case let .success(.verified(transaction)):
+                await transaction.finish()
+                await refreshEntitlements()
+                // currentEntitlements can lag right after a purchase, and in-app purchases never
+                // come through Transaction.updates, so open what was just bought directly.
+                access.grant(transaction.productID)
+            case let .success(.unverified(transaction, error)):
+                Log.ui.error("Purchase \(transaction.productID, privacy: .public) failed verification: \(String(describing: error), privacy: .public)")
+            case .pending, .userCancelled:
+                break
+            @unknown default:
+                break
+            }
         } catch {
             Log.ui.error("Purchase failed: \(String(describing: error), privacy: .public)")
         }
@@ -74,13 +88,13 @@ final class PackStore {
     private func refreshEntitlements() async {
         var access = PackAccess(adUnlocked: Set(UserDefaults.standard.stringArray(forKey: Self.adUnlockedKey) ?? []))
         for await result in Transaction.currentEntitlements {
-            guard case let .verified(transaction) = result, transaction.revocationDate == nil else { continue }
-            if transaction.productID == Self.allPacksID {
-                access.ownsAll = true
-            } else if transaction.productID == Self.removeAdsID {
-                access.adsRemoved = true
-            } else if let category = PuzzleCategory.allCases.first(where: { Self.productID(for: $0) == transaction.productID }) {
-                access.owned.insert(category)
+            switch result {
+            case let .verified(transaction) where transaction.revocationDate == nil:
+                access.grant(transaction.productID)
+            case let .unverified(transaction, error):
+                Log.ui.error("Entitlement \(transaction.productID, privacy: .public) failed verification: \(String(describing: error), privacy: .public)")
+            default:
+                break
             }
         }
         self.access = access
