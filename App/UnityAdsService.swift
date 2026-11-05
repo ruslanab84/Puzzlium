@@ -28,6 +28,10 @@ final class UnityAdsService: AdServing {
         #else
         let testMode = false
         #endif
+        // No consent screen, so tell Unity the user has not granted GDPR consent: EU users get
+        // contextual (non-personalized) ads. Must run before initialize.
+        // ponytail: blanket "no consent"; add a CMP/consent screen if personalized EU ads matter.
+        UnityAds.setUserConsent(false)
         let config = UADSInitializationConfigurationBuilder(gameId: Self.gameID).with(testMode: testMode).build()
         UnityAds.initialize(config) { @Sendable error in
             if let error {
