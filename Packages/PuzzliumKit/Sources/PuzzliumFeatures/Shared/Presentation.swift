@@ -12,7 +12,7 @@ extension PuzzleCategory {
         case .food: L10n.Category.food
         case .illustrations: L10n.Category.illustrations
         case .patterns: L10n.Category.patterns
-        case .kids: L10n.Category.kids
+        case .cute: L10n.Category.cute
         case .space: L10n.Category.space
         case .planets: L10n.Category.planets
         case .underwater: L10n.Category.underwater

@@ -57,7 +57,7 @@ FEATURES = [
     ("category.food", "Food", "Еда", []),
     ("category.illustrations", "Illustrations", "Иллюстрации", []),
     ("category.patterns", "Patterns", "Узоры", []),
-    ("category.kids", "Kids", "Детям", []),
+    ("category.cute", "Cute", "Милое", []),
     ("category.space", "Space", "Космос", []),
     ("category.planets", "Planets & Stars", "Планеты и звёзды", []),
     ("category.underwater", "Underwater", "Подводный мир", []),

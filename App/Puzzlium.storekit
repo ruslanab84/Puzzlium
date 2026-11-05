@@ -128,18 +128,18 @@
       "internalID": "3352706654",
       "localizations": [
         {
-          "description": "Every kids picture.",
-          "displayName": "Kids pack",
+          "description": "Every cute picture.",
+          "displayName": "Cute pack",
           "locale": "en_US"
         },
         {
-          "description": "Все картинки категории «Детские».",
-          "displayName": "Набор «Детские»",
+          "description": "Все картинки категории «Милое».",
+          "displayName": "Набор «Милое»",
           "locale": "ru"
         }
       ],
-      "productID": "RuslanAbd.Puzzlium.pack.kids",
-      "referenceName": "Pack Kids",
+      "productID": "RuslanAbd.Puzzlium.pack.cute",
+      "referenceName": "Pack Cute",
       "type": "NonConsumable"
     },
     {

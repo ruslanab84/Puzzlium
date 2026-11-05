@@ -579,19 +579,19 @@
         }
       }
     },
-    "category.kids": {
+    "category.cute": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kids"
+            "value": "Cute"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Детям"
+            "value": "Милое"
           }
         }
       }

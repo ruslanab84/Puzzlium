@@ -65,14 +65,14 @@ enum BundledCatalog {
             let name = String(format: "flower-%02d", index + 1)
             return Puzzle(id: name, title: title, category: .flowers, image: .bundled(name))
         }
-        let kids = [
+        let cute = [
             "Dinosaur Adventure", "Toy Train", "Space Rocket", "Treasure Island", "Farm Friends",
             "Friendly Dragon", "Ocean Adventure", "Playful Penguins", "Balloon Ride", "Teddy Bear Picnic",
             "Robot City", "Jungle Treehouse", "Rainbow Unicorn", "Playful Puppies", "Fire Truck Friends",
             "Animal Bakery", "Ocean Whales", "Animal Circus", "Woodland Bicycle Ride", "Candy Village"
         ].enumerated().map { index, title in
             let name = String(format: "kids-%02d", index + 1)
-            return Puzzle(id: name, title: title, category: .kids, image: .bundled(name))
+            return Puzzle(id: name, title: title, category: .cute, image: .bundled(name))
         }
         let space = [
             "Lunar Explorer", "Spiral Galaxy", "Saturn and Moons", "Mars Rover", "Stellar Nursery",
@@ -141,6 +141,6 @@ enum BundledCatalog {
             let resource = "underwater-\(name)"
             return Puzzle(id: resource, title: title, category: .underwater, image: .bundled(resource))
         }
-        return cities + animals + art + postImpressionism + flowers + kids + space + wildlife + food + illustrations + patterns + planets + underwater
+        return cities + animals + art + postImpressionism + flowers + cute + space + wildlife + food + illustrations + patterns + planets + underwater
     }
 }
