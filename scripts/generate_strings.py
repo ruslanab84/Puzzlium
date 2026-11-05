@@ -155,6 +155,12 @@ FEATURES = [
     ("pack.watchAd", "Watch an ad to open this picture", "Открыть картинку за рекламу", []),
     ("pack.removeAds", "Remove ads", "Убрать рекламу", []),
     ("pack.adUnavailable", "No ad available right now. Try again later.", "Реклама сейчас недоступна. Попробуйте позже.", []),
+
+    ("about.title", "About", "О приложении", []),
+    ("about.version", "Version", "Версия", []),
+    ("about.privacy", "Privacy Policy", "Политика конфиденциальности", []),
+    ("about.terms", "Terms of Use", "Условия использования", []),
+    ("about.support", "Support", "Поддержка", []),
 ]
 
 CATALOG = [

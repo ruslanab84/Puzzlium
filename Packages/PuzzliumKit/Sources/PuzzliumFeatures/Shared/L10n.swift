@@ -164,4 +164,12 @@ enum L10n {
         static var removeAds: String { String(localized: "pack.removeAds", defaultValue: "Remove ads", bundle: .module) }
         static var adUnavailable: String { String(localized: "pack.adUnavailable", defaultValue: "No ad available right now. Try again later.", bundle: .module) }
     }
+
+    enum About {
+        static var title: String { String(localized: "about.title", defaultValue: "About", bundle: .module) }
+        static var version: String { String(localized: "about.version", defaultValue: "Version", bundle: .module) }
+        static var privacy: String { String(localized: "about.privacy", defaultValue: "Privacy Policy", bundle: .module) }
+        static var terms: String { String(localized: "about.terms", defaultValue: "Terms of Use", bundle: .module) }
+        static var support: String { String(localized: "about.support", defaultValue: "Support", bundle: .module) }
+    }
 }

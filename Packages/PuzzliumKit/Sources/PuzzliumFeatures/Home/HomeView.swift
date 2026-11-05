@@ -71,6 +71,7 @@ struct HomeView: View {
 private struct HomeHeader: View {
     let date: Date
     let streak: Int
+    @State private var showsAbout = false
 
     var body: some View {
         HStack(alignment: .center) {
@@ -93,6 +94,10 @@ private struct HomeHeader: View {
                     .frame(minHeight: 36)
                     .background(PZColor.surface, in: Capsule())
             }
+            Button(L10n.About.title, systemImage: "info.circle") { showsAbout = true }
+                .labelStyle(.iconOnly)
+                .buttonStyle(.pzCircle(background: PZColor.surface, foreground: PZColor.ink))
+                .sheet(isPresented: $showsAbout) { AboutView() }
         }
     }
 }
